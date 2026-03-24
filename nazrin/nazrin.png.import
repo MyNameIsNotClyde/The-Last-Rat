@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhp0mh2lhedmk"
-path="res://.godot/imported/UpLeft 1.png-dc4a2d4f77fb56bbff9973cf4f7e0361.ctex"
+uid="uid://bwjhi3wn5mkse"
+path="res://.godot/imported/nazrin.png-89b391a35a105c48d63d0726bf464463.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://nazrin/UpLeft 1.png"
-dest_files=["res://.godot/imported/UpLeft 1.png-dc4a2d4f77fb56bbff9973cf4f7e0361.ctex"]
+source_file="res://nazrin/nazrin.png"
+dest_files=["res://.godot/imported/nazrin.png-89b391a35a105c48d63d0726bf464463.ctex"]
 
 [params]
 
