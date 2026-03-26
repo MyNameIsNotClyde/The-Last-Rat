@@ -12,9 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if is_dead:
-		$AnimatedSprite2D.animation = "dead"
-		return
+	if is_dead: return
 	var vel = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		vel.y -= 1
@@ -33,20 +31,13 @@ func _process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.stop()
 	if vel.x < 0:
-		if vel.y < 0: $AnimatedSprite2D.animation = "walk_upleft"
-		elif vel.y > 0: $AnimatedSprite2D.animation = "walk_downleft"
-		else: $AnimatedSprite2D.animation = "walk_left"
+		$AnimatedSprite2D.flip_h = true
 	elif vel.x > 0:
-		if vel.y < 0: $AnimatedSprite2D.animation = "walk_upright"
-		elif vel.y > 0: $AnimatedSprite2D.animation = "walk_downright"
-		else: $AnimatedSprite2D.animation = "walk_right"
-	else:
-		if vel.y < 0: $AnimatedSprite2D.animation = "walk_up"
-		elif vel.y > 0: $AnimatedSprite2D.animation = "walk_down"
-		
+		$AnimatedSprite2D.flip_h = false
 
 func _on_body_entered(body: Node2D) -> void:
 	is_dead = true
+	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
 
