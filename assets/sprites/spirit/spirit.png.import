@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwjhi3wn5mkse"
-path="res://.godot/imported/nazrin.png-89b391a35a105c48d63d0726bf464463.ctex"
+uid="uid://dxb4o4pvpfxsy"
+path="res://.godot/imported/spirit.png-a44c506cd5f20798e499f38ecf49b684.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://nazrin/nazrin.png"
-dest_files=["res://.godot/imported/nazrin.png-89b391a35a105c48d63d0726bf464463.ctex"]
+source_file="res://assets/sprites/spirit/spirit.png"
+dest_files=["res://.godot/imported/spirit.png-a44c506cd5f20798e499f38ecf49b684.ctex"]
 
 [params]
 

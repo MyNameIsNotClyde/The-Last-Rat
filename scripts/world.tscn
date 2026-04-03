@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://oi8shxs3x8n6"]
+
+[ext_resource type="PackedScene" uid="uid://cwbjrfvu80m0t" path="res://scripts/player.tscn" id="1_u0x2w"]
+[ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/grunt.tscn" id="2_ras4o"]
+[ext_resource type="PackedScene" uid="uid://cyd4lmdk0gw7v" path="res://scripts/enemy_spawner.tscn" id="2_u0x2w"]
+[ext_resource type="Script" uid="uid://cgoluqakvr7x2" path="res://scripts/util/spawnInfo.gd" id="3_58uta"]
+
+[sub_resource type="Resource" id="Resource_uxu58"]
+script = ExtResource("3_58uta")
+time_end = 60
+enemy = ExtResource("2_ras4o")
+spawn_amount = 3
+spawn_interval = 2
+metadata/_custom_type_script = "uid://cgoluqakvr7x2"
+
+[node name="World" type="Node2D" unique_id=2080132789]
+
+[node name="Player" parent="." unique_id=1141310792 instance=ExtResource("1_u0x2w")]
+
+[node name="EnemySpawner" parent="." unique_id=309922029 instance=ExtResource("2_u0x2w")]
+spawns = Array[ExtResource("3_58uta")]([SubResource("Resource_uxu58")])
