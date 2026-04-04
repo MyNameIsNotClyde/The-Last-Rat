@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://oi8shxs3x8n6"]
 
 [ext_resource type="PackedScene" uid="uid://cwbjrfvu80m0t" path="res://scripts/player.tscn" id="1_u0x2w"]
+[ext_resource type="Texture2D" uid="uid://b4tuioimse7tk" path="res://assets/sprites/Tile.png" id="1_uxu58"]
 [ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/grunt.tscn" id="2_ras4o"]
 [ext_resource type="PackedScene" uid="uid://cyd4lmdk0gw7v" path="res://scripts/enemy_spawner.tscn" id="2_u0x2w"]
 [ext_resource type="Script" uid="uid://cgoluqakvr7x2" path="res://scripts/util/spawnInfo.gd" id="3_58uta"]
@@ -14,6 +15,14 @@ spawn_interval = 2
 metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [node name="World" type="Node2D" unique_id=2080132789]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=743520770]
+offset_left = -1600.0
+offset_top = -1200.0
+offset_right = 1600.0
+offset_bottom = 1200.0
+texture = ExtResource("1_uxu58")
+stretch_mode = 1
 
 [node name="Player" parent="." unique_id=1141310792 instance=ExtResource("1_u0x2w")]
 

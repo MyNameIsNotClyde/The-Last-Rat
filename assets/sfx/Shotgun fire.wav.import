@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccydlwaputipu"
+path="res://.godot/imported/Shotgun fire.wav-c1dbcfd79aa152d8d1911840ee616bc4.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Shotgun fire.wav"
+dest_files=["res://.godot/imported/Shotgun fire.wav-c1dbcfd79aa152d8d1911840ee616bc4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

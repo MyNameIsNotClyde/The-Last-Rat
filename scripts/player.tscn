@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bddmfg1lk353g" path="res://scripts/player.gd" id="1_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bwjhi3wn5mkse" path="res://assets/sprites/nazrin/nazrin.png" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_fhbv5"]
+[ext_resource type="PackedScene" uid="uid://3al6tm5dx0c6" path="res://scripts/util/enemy_detector.tscn" id="4_pqap4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
 radius = 3.0
@@ -28,6 +29,7 @@ texture = ExtResource("2_onrkg")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906332483]
+visible = false
 shape = SubResource("CapsuleShape2D_op7ga")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=753810942]
@@ -49,11 +51,14 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_fhbv5")]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1489616137]
 shape = SubResource("RectangleShape2D_pqap4")
+
+[node name="EnemyDetector" parent="." unique_id=28083573 instance=ExtResource("4_pqap4")]
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 
