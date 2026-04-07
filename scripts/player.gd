@@ -3,12 +3,11 @@ extends CharacterBody2D
 @export var speed = 100
 @export var max_health = 100
 var health = 80
-var weapons = []
+var weapons: Array[Weapon] = []
 
 func _ready() -> void:
-	var shotgun = load("res://scripts/weapons/shotgun.tscn").instantiate()
-	add_child(shotgun)
-	weapons.append(shotgun)
+	add_weapon("shotgun", 1)
+	add_weapon("crossbow", 1)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -31,15 +30,20 @@ func _process(_delta: float) -> void:
 
 func attack():
 	for weapon in weapons:
-		if weapon.ammo <= 0: continue
 		match weapon.target_mode:
-			0: # none
-				weapon.shoot()
-			1: # random
+			Weapon.TARGET_MODE.NONE:
+				weapon.shoot(null)
+			Weapon.TARGET_MODE.RANDOM:
 				weapon.shoot($EnemyDetector.get_random_enemy())
-			2: # closest
+			Weapon.TARGET_MODE.CLOSEST:
 				weapon.shoot($EnemyDetector.get_closest_enemy())
 
-func _on_hurtbox_hurt(damage: int) -> void:
+func _on_hurtbox_hurt(damage: int, _kb_power, _kb_angle) -> void:
 	health -= damage
 	print(health)
+
+func add_weapon(weapon_name: String, level: int):
+	var weapon = load("res://scripts/weapons/%s.tscn"%weapon_name).instantiate()
+	weapon.level = level
+	add_child(weapon)
+	weapons.append(weapon)

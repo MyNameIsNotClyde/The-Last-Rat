@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c54pcen2rp4i0"]
 
-[ext_resource type="Script" path="res://scripts/weapons/bullet.gd" id="1_dyxvc"]
+[ext_resource type="Script" uid="uid://u786b76cgebw" path="res://scripts/weapons/bullet.gd" id="1_dyxvc"]
 [ext_resource type="Texture2D" uid="uid://bpyo0lyyun61f" path="res://assets/sprites/weapon/pellet.png" id="2_po0p4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq0wd"]

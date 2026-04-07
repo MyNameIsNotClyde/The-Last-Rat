@@ -1,21 +1,24 @@
-extends Node2D
+extends Weapon
 
-var level: int = 1 # Level for upgradable weapons
-var ammo: int # Current number of shots remaining
-@export var max_ammo: int = 2 # Number of shots after reload
-@export var shoot_time: float = 0.8 # Time between shots
-@export var reload_time: float = 2.0 # Time for reload
-@export_enum("none", "random", "closest") var target_mode = 2
-@export var spread_angle: float = 10
-@export var spread_amount: int = 5
+var spread_angle: float
+var spread_amount: int
 
-@export var projectile: Resource
-var proj_angle = Vector2.ZERO # Projectile travel direction
-var proj_durability = 1 # Projectile pierce
-var proj_speed = 400 # Projectile speed
-var proj_damage = 5 # Projectile damage
-var proj_knockback = 100 # Projectile knockback
-var proj_size = 1.0 # Projectile size scaler
+func _init() -> void:
+	spread_angle = 10.0
+	spread_amount = 5
+	var weapon_max_ammo = 2
+	var weapon_shoot_time = 0.8
+	var weapon_reload_time = 2.0
+	var weapon_target_mode = TARGET_MODE.CLOSEST
+	var weapon_projectile = preload("res://scripts/weapons/bullet.tscn")
+	
+	super(
+		weapon_max_ammo, 
+		weapon_shoot_time, 
+		weapon_reload_time,
+		weapon_target_mode, 
+		weapon_projectile
+		)
 
 func _ready() -> void:
 	match level:
@@ -23,13 +26,10 @@ func _ready() -> void:
 			proj_durability = 1
 			proj_speed = 400
 			proj_damage = 5
-			proj_knockback = 100
+			proj_kb_power = 100
 			proj_size = 1.0
-	ammo = max_ammo
-	$ShootTimer.wait_time = shoot_time
-	$ReloadTimer.wait_time = reload_time
 
-func shoot(target):
+func shoot(target: Node2D):
 	if target == null: return # Check if there is a target
 	if level <= 0: return # Check if player has weapon
 	if ammo <= 0: return # Check if weapon has ammo
@@ -38,14 +38,9 @@ func shoot(target):
 	@warning_ignore("integer_division")
 	var offset = spread_amount / 2
 	for i in range(-offset, offset+1):
-		var bullet = projectile.instantiate()
-		bullet.global_position = global_position
+		var bullet: Projectile = projectile.instantiate()
+		set_projectile_vars(bullet)
 		bullet.angle = proj_angle.rotated(deg_to_rad(spread_angle*i))
-		bullet.durability = proj_durability
-		bullet.speed = proj_speed
-		bullet.damage = proj_damage
-		bullet.knockback = proj_knockback
-		bullet.size = proj_size
 		add_child(bullet)
 	ammo -= 1
 	$ShootSound.play()

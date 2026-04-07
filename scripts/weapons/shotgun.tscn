@@ -1,28 +1,18 @@
 [gd_scene format=3 uid="uid://nt1mri0ei7xn"]
 
 [ext_resource type="Script" uid="uid://06m07lrsydsu" path="res://scripts/weapons/shotgun.gd" id="1_cq0wd"]
-[ext_resource type="PackedScene" uid="uid://c54pcen2rp4i0" path="res://scripts/weapons/bullet.tscn" id="2_cq0wd"]
 [ext_resource type="AudioStream" uid="uid://dknxftr3vssv2" path="res://assets/sfx/Shotgun load.wav" id="3_ml26f"]
 [ext_resource type="AudioStream" uid="uid://ccydlwaputipu" path="res://assets/sfx/Shotgun fire.wav" id="4_ge4nk"]
 
 [node name="Shotgun" type="Node2D" unique_id=1791852348]
 script = ExtResource("1_cq0wd")
-spread_angle = 8.0
-projectile = ExtResource("2_cq0wd")
-
-[node name="ShootTimer" type="Timer" parent="." unique_id=1315014802]
-one_shot = true
-
-[node name="ReloadTimer" type="Timer" parent="." unique_id=1998640291]
-one_shot = true
 
 [node name="ReloadSound" type="AudioStreamPlayer" parent="." unique_id=1100233357]
 stream = ExtResource("3_ml26f")
-volume_db = -10.0
+volume_db = -20.0
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=490886252]
 stream = ExtResource("4_ge4nk")
-volume_db = -10.0
+volume_db = -20.0
 
-[connection signal="timeout" from="ReloadTimer" to="." method="reload"]
 [connection signal="finished" from="ReloadSound" to="." method="_on_reload_sound_finished"]

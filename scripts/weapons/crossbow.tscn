@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://q71a63ywklmm"]
+
+[ext_resource type="Script" uid="uid://pm81g34lh8nj" path="res://scripts/weapons/crossbow.gd" id="1_xbpsd"]
+[ext_resource type="AudioStream" uid="uid://3fvljlee5rp3" path="res://assets/sfx/Crossbow load.mp3" id="2_khbhm"]
+[ext_resource type="AudioStream" uid="uid://ci1oqfpbr5q8t" path="res://assets/sfx/Crossbow fire.mp3" id="3_krdkj"]
+
+[node name="Crossbow" type="Node2D" unique_id=518246880]
+script = ExtResource("1_xbpsd")
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="." unique_id=2075550191]
+stream = ExtResource("2_khbhm")
+volume_db = -20.0
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=1440761817]
+stream = ExtResource("3_krdkj")
+volume_db = -20.0
+
+[connection signal="finished" from="ReloadSound" to="." method="_on_reload_sound_finished"]
