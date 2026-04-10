@@ -6,9 +6,6 @@ var health = 80
 var weapons: Array[Weapon] = []
 var experience = 0
 var level = 1
-var level_up_queue = 0
-
-@onready var upgrade_slot = preload("res://scripts/util/upgrade_menu_slot.tscn")
 
 func _ready() -> void:
 	set_exp_bar(experience, get_xp_lvl_up_req())
@@ -65,8 +62,8 @@ func _on_loot_collector_exp_gain(amount: int) -> void:
 		experience -= experience_needed_to_level_up
 		experience_needed_to_level_up = get_xp_lvl_up_req()
 	set_exp_bar(experience, experience_needed_to_level_up)
-	level_up_queue = level - level_before_collect
-	display_level_up_screen()
+	$%LevelUpPanel.level_up_queue = level - level_before_collect
+	$%LevelUpPanel.display_level_up_screen()
 
 func get_xp_lvl_up_req() -> int:
 	if level < 20: return level*5
@@ -76,30 +73,5 @@ func get_xp_lvl_up_req() -> int:
 func set_exp_bar(value, max_value):
 	$%ExperienceBar.value = value * 100.0 / max_value
 
-func display_level_up_screen() -> void:
-	if level_up_queue < 1: return
-	var levelUpPanel = $HUD/LevelUpPanel
-	var levelUpUpgradeMenu = $HUD/LevelUpPanel/UpgradeMenu
-	var levelUpSound = $HUD/LevelUpPanel/LevelUpSound
-	levelUpSound.play()
-	var tween = levelUpPanel.create_tween()
-	tween.tween_property(levelUpPanel, "position", Vector2(220, 50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	tween.play()
-	levelUpPanel.visible = true
-	var slot_max = 3
-	for slot_index in range(slot_max):
-		var new_upgrade_slot = upgrade_slot.instantiate()
-		new_upgrade_slot.connect("selected_upgrade", Callable(self, "upgrade"))
-		levelUpUpgradeMenu.add_child(new_upgrade_slot)
-	level_up_queue -= 1
-	get_tree().paused = true
-
 func upgrade(upgrade_object) -> void:
-	var levelUpPanel = $HUD/LevelUpPanel
-	var levelUpUpgradeMenu = $HUD/LevelUpPanel/UpgradeMenu
-	for slot in levelUpUpgradeMenu.get_children():
-		slot.queue_free()
-	levelUpPanel.visible = false
-	levelUpPanel.position = Vector2(800, 50)
-	get_tree().paused = false
-	display_level_up_screen()
+	pass

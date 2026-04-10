@@ -1,22 +1,13 @@
-[gd_scene format=3 uid="uid://cb77qlphwv82b"]
+[gd_scene format=3 uid="uid://qcftk2ev40un"]
 
 [ext_resource type="Texture2D" uid="uid://dj8mks7a6hjuh" path="res://assets/sprites/Weapon Icon.png" id="1_st86q"]
+[ext_resource type="Script" uid="uid://gw85866gmntm" path="res://scripts/hud/upgrade_menu_slot.gd" id="1_wnc5l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyr4r"]
 bg_color = Color(0.4, 0.4, 0.4, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdjh4"]
 bg_color = Color(0.5, 0.5, 0.5, 1)
-
-[sub_resource type="GDScript" id="GDScript_st86q"]
-script/source = "extends Button
-
-var object
-signal selected_upgrade(upgrade_object)
-
-func _on_pressed() -> void:
-	emit_signal(\"selected_upgrade\", object)
-"
 
 [node name="UpgradeMenuSlot" type="Button" unique_id=856507151]
 custom_minimum_size = Vector2(180, 50)
@@ -29,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_jyr4r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bdjh4")
-script = SubResource("GDScript_st86q")
+script = ExtResource("1_wnc5l")
 
 [node name="LabelName" type="Label" parent="." unique_id=418801989]
 layout_mode = 0
