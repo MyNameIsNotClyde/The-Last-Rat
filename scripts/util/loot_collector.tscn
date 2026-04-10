@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c6b85tcewf83j"]
+
+[ext_resource type="Script" uid="uid://ceo6i7rwdcltg" path="res://scripts/util/loot_collector.gd" id="1_gwf4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iohms"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwf4a"]
+radius = 8.0
+
+[node name="LootCollector" type="Node2D" unique_id=754517485]
+script = ExtResource("1_gwf4a")
+
+[node name="AttractArea" type="Area2D" parent="." unique_id=390699901]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractArea" unique_id=1612164710]
+shape = SubResource("CircleShape2D_iohms")
+
+[node name="CollectArea" type="Area2D" parent="." unique_id=884244140]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea" unique_id=284165927]
+shape = SubResource("CircleShape2D_gwf4a")
+
+[connection signal="area_entered" from="AttractArea" to="." method="_on_attract_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

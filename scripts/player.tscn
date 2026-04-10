@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bwjhi3wn5mkse" path="res://assets/sprites/nazrin/nazrin.png" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_fhbv5"]
 [ext_resource type="PackedScene" uid="uid://3al6tm5dx0c6" path="res://scripts/util/enemy_detector.tscn" id="4_pqap4"]
+[ext_resource type="PackedScene" uid="uid://c6b85tcewf83j" path="res://scripts/util/loot_collector.tscn" id="5_2c7ny"]
+[ext_resource type="AudioStream" uid="uid://ck3hrulloq1fs" path="res://assets/sfx/Level Up.ogg" id="6_0jhex"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
 radius = 3.0
@@ -19,6 +21,19 @@ thickness = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqap4"]
 size = Vector2(10, 20)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7ny"]
+draw_center = false
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0jhex"]
+color = Color(0.33169833, 0.53651005, 1, 1)
+grow_begin = -4.0
+grow_end = -4.0
+thickness = 28
+
 [node name="Player" type="CharacterBody2D" unique_id=1141310792 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_b26j0")
@@ -27,6 +42,10 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1868126011]
 texture = ExtResource("2_onrkg")
 hframes = 4
+
+[node name="WalkTimer" type="Timer" parent="Sprite2D" unique_id=950250331]
+wait_time = 0.2
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906332483]
 visible = false
@@ -46,10 +65,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1486409744]
 
-[node name="WalkTimer" type="Timer" parent="." unique_id=950250331]
-wait_time = 0.2
-one_shot = true
-
 [node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_fhbv5")]
 visible = false
 collision_layer = 2
@@ -59,7 +74,58 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_pqap4")
 
 [node name="EnemyDetector" parent="." unique_id=28083573 instance=ExtResource("4_pqap4")]
+visible = false
+
+[node name="LootCollector" parent="." unique_id=754517485 instance=ExtResource("5_2c7ny")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=790993078]
+
+[node name="ExperienceBar" type="ProgressBar" parent="HUD" unique_id=176486743]
+unique_name_in_owner = true
+offset_right = 640.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2c7ny")
+theme_override_styles/fill = SubResource("StyleBoxLine_0jhex")
+show_percentage = false
+
+[node name="LevelLabel" type="Label" parent="HUD/ExperienceBar" unique_id=2118679912]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 540.0
+offset_right = 640.0
+offset_bottom = 32.0
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUpPanel" type="Panel" parent="HUD" unique_id=1603369623]
+process_mode = 2
+visible = false
+offset_left = 800.0
+offset_top = 50.0
+offset_right = 1000.0
+offset_bottom = 300.0
+
+[node name="LevelUpLabel" type="Label" parent="HUD/LevelUpPanel" unique_id=571886529]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "LEVEL UP!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeMenu" type="VBoxContainer" parent="HUD/LevelUpPanel" unique_id=1793870528]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+
+[node name="LevelUpSound" type="AudioStreamPlayer" parent="HUD/LevelUpPanel" unique_id=627578720]
+stream = ExtResource("6_0jhex")
+volume_db = -20.0
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="exp_gain" from="LootCollector" to="." method="_on_loot_collector_exp_gain"]
 
 [editable path="Hurtbox"]

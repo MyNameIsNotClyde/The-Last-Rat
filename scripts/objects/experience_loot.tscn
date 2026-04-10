@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cg5xfuffxuxo5"]
+
+[ext_resource type="Script" uid="uid://cfdytsjxnscay" path="res://scripts/objects/experience_loot.gd" id="1_bfder"]
+[ext_resource type="Texture2D" uid="uid://yqm2f3xv7vkf" path="res://assets/sprites/XP.png" id="1_w4rv5"]
+[ext_resource type="AudioStream" uid="uid://ee4wh2simp8v" path="res://assets/sfx/XP get.ogg" id="2_bfder"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltfov"]
+size = Vector2(16, 16)
+
+[node name="ExperienceLoot" type="Area2D" unique_id=1133823140 groups=["loot"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_bfder")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=868190785]
+texture = ExtResource("1_w4rv5")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1632045438]
+shape = SubResource("RectangleShape2D_ltfov")
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="." unique_id=2030965560]
+stream = ExtResource("2_bfder")
+volume_db = -20.0
+
+[connection signal="finished" from="CollectSound" to="." method="_on_collect_sound_finished"]

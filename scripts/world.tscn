@@ -28,3 +28,5 @@ stretch_mode = 1
 
 [node name="EnemySpawner" parent="." unique_id=309922029 instance=ExtResource("2_u0x2w")]
 spawns = Array[ExtResource("3_58uta")]([SubResource("Resource_uxu58")])
+
+[node name="LootPool" type="Node2D" parent="." unique_id=1534728463 groups=["loot"]]
