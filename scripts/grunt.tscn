@@ -12,7 +12,7 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0an0k"]
 size = Vector2(14, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj130"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyp1q"]
 size = Vector2(10, 20)
 
 [node name="Grunt" type="CharacterBody2D" unique_id=871270266]
@@ -34,21 +34,19 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_nyp1q")]
-visible = false
 collision_layer = 4
 collision_mask = 2
-hurtboxType = 1
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1489616137]
 shape = SubResource("RectangleShape2D_0an0k")
 
 [node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_57po7")]
 visible = false
-collision_layer = 4
 collision_mask = 2
+hitbox_type = 1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
-shape = SubResource("RectangleShape2D_xj130")
+shape = SubResource("RectangleShape2D_nyp1q")
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 

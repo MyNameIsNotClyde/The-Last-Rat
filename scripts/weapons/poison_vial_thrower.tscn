@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://r2ooc83wlshi"]
+
+[ext_resource type="Script" uid="uid://bsbu4g6k7bqs2" path="res://scripts/weapons/poison_vial_thrower.gd" id="1_mjyjr"]
+[ext_resource type="AudioStream" uid="uid://bq7ceem1vk5qi" path="res://assets/sfx/Potion Throw.mp3" id="2_hrltx"]
+
+[node name="Poison Vial Thrower" type="Node2D" unique_id=664747325]
+script = ExtResource("1_mjyjr")
+
+[node name="ThrowSound" type="AudioStreamPlayer" parent="." unique_id=350982034]
+stream = ExtResource("2_hrltx")
+volume_db = -10.0

@@ -11,8 +11,6 @@ var is_dead = false
 @onready var loot_pool = get_tree().get_first_node_in_group("loot")
 var exp_loot = preload("res://scripts/objects/experience_loot.tscn")
 
-signal node_freed(obj)
-
 func _physics_process(_delta: float) -> void:
 	kb_force = kb_force.move_toward(Vector2.ZERO, kb_recovery)
 	if player == null: return
@@ -43,5 +41,6 @@ func death():
 	new_exp_loot.global_position = global_position
 	new_exp_loot.experience_amount = experience
 	loot_pool.call_deferred("add_child", new_exp_loot)
-	emit_signal("node_freed", self)
+	var hurtbox = $Hurtbox
+	hurtbox.node_freed.emit(hurtbox)
 	queue_free()

@@ -1,20 +1,15 @@
 extends Weapon
 
-func _init():
-	var weapon_max_ammo = 1
-	var weapon_shoot_time = 0
-	var weapon_reload_time = 1.2
-	var weapon_target_mode = TARGET_MODE.RANDOM
-	var weapon_projectile = preload("res://scripts/weapons/bullet.tscn")
-	super(
-		weapon_max_ammo,
-		weapon_shoot_time,
-		weapon_reload_time,
-		weapon_target_mode,
-		weapon_projectile
-		)
-
 func _ready() -> void:
+	max_ammo = 1
+	reload_time = 1.2
+	target_mode = TARGET_MODE.RANDOM
+	target_range = 200
+	projectile = preload("res://scripts/weapons/arrow.tscn")
+	super()
+
+func set_level(new_level: int):
+	level = new_level
 	match level:
 		1:
 			proj_durability = 99
@@ -27,11 +22,16 @@ func shoot(target: Node2D):
 	if target == null: return # Check if there is a target
 	if level <= 0: return # Check if player has weapon
 	if ammo <= 0: return
-	proj_angle = global_position.direction_to(target.global_position)
 	var arrow: Projectile = projectile.instantiate()
-	arrow.global_position = global_position
-	arrow.angle = proj_angle
-	set_projectile_vars(arrow)
+	arrow.set_props(
+		global_position,
+		global_position.direction_to(target.global_position),
+		proj_speed,
+		proj_durability,
+		proj_damage,
+		proj_kb_power,
+		proj_size
+	)
 	add_child(arrow)
 	ammo -= 1
 	$ShootSound.play()

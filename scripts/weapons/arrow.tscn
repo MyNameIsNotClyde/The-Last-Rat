@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0i8lbjs6qi7k"]
+
+[ext_resource type="Texture2D" uid="uid://t7nodrdwrrsf" path="res://assets/sprites/weapon/arrow.png" id="1_d5akp"]
+[ext_resource type="Script" uid="uid://bnfp4id8q6o4t" path="res://scripts/weapons/projectile.gd" id="1_g5xh4"]
+[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="2_g5xh4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h3o8"]
+size = Vector2(6, 16)
+
+[node name="Arrow" type="Node2D" unique_id=1482762880]
+top_level = true
+script = ExtResource("1_g5xh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=974194262]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_d5akp")
+
+[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("2_g5xh4")]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
+shape = SubResource("RectangleShape2D_4h3o8")
+
+[editable path="Hitbox"]

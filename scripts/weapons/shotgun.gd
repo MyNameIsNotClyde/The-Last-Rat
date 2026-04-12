@@ -3,24 +3,19 @@ extends Weapon
 var spread_angle: float
 var spread_amount: int
 
-func _init() -> void:
+func _ready() -> void:
+	max_ammo = 2
+	shoot_time = 0.8
+	reload_time = 2.0
+	target_mode = TARGET_MODE.CLOSEST
+	target_range = 100
+	projectile = preload("res://scripts/weapons/bullet.tscn")
 	spread_angle = 10.0
 	spread_amount = 5
-	var weapon_max_ammo = 2
-	var weapon_shoot_time = 0.8
-	var weapon_reload_time = 2.0
-	var weapon_target_mode = TARGET_MODE.CLOSEST
-	var weapon_projectile = preload("res://scripts/weapons/bullet.tscn")
-	
-	super(
-		weapon_max_ammo, 
-		weapon_shoot_time, 
-		weapon_reload_time,
-		weapon_target_mode, 
-		weapon_projectile
-		)
+	super()
 
-func _ready() -> void:
+func set_level(new_level: int):
+	level = new_level
 	match level:
 		1:
 			proj_durability = 1
@@ -39,8 +34,15 @@ func shoot(target: Node2D):
 	var offset = spread_amount / 2
 	for i in range(-offset, offset+1):
 		var bullet: Projectile = projectile.instantiate()
-		set_projectile_vars(bullet)
-		bullet.angle = proj_angle.rotated(deg_to_rad(spread_angle*i))
+		bullet.set_props(
+			global_position,
+			proj_angle.rotated(deg_to_rad(spread_angle*i)),
+			proj_speed,
+			proj_durability,
+			proj_damage,
+			proj_kb_power,
+			proj_size
+		)
 		add_child(bullet)
 	ammo -= 1
 	$ShootSound.play()

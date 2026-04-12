@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bq7ceem1vk5qi"
+path="res://.godot/imported/Potion Throw.mp3-57fdaa790be14f8a1b196219bfba0a99.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Potion Throw.mp3"
+dest_files=["res://.godot/imported/Potion Throw.mp3-57fdaa790be14f8a1b196219bfba0a99.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

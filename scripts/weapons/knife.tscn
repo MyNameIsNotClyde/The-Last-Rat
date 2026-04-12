@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cy6cb15g1kmju"]
+
+[ext_resource type="Texture2D" uid="uid://bv13ascbwetcd" path="res://assets/sprites/weapon/kunai.png" id="1_3g3pm"]
+[ext_resource type="Script" uid="uid://bnfp4id8q6o4t" path="res://scripts/weapons/projectile.gd" id="1_c8c07"]
+[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="2_c8c07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yffqp"]
+size = Vector2(6, 10)
+
+[node name="Knife" type="Node2D" unique_id=1111718698]
+top_level = true
+script = ExtResource("1_c8c07")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1564221491]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_3g3pm")
+
+[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("2_c8c07")]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
+shape = SubResource("RectangleShape2D_yffqp")
+
+[editable path="Hitbox"]

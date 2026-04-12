@@ -11,6 +11,8 @@ func _ready() -> void:
 	set_exp_bar(experience, get_xp_lvl_up_req())
 	add_weapon("shotgun", 1)
 	add_weapon("crossbow", 1)
+	add_weapon("knife_thrower", 1)
+	add_weapon("poison_vial_thrower", 1)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -37,9 +39,9 @@ func attack():
 			Weapon.TARGET_MODE.NONE:
 				weapon.shoot(null)
 			Weapon.TARGET_MODE.RANDOM:
-				weapon.shoot($EnemyDetector.get_random_enemy())
+				weapon.shoot($EnemyDetector.get_random_enemy(weapon.target_range))
 			Weapon.TARGET_MODE.CLOSEST:
-				weapon.shoot($EnemyDetector.get_closest_enemy())
+				weapon.shoot($EnemyDetector.get_closest_enemy(weapon.target_range))
 
 func _on_hurtbox_hurt(damage: int, _kb_power, _kb_angle) -> void:
 	health -= damage
@@ -47,7 +49,7 @@ func _on_hurtbox_hurt(damage: int, _kb_power, _kb_angle) -> void:
 
 func add_weapon(weapon_name: String, weapon_level: int):
 	var weapon = load("res://scripts/weapons/%s.tscn"%weapon_name).instantiate()
-	weapon.level = weapon_level
+	weapon.set_level(weapon_level)
 	add_child(weapon)
 	weapons.append(weapon)
 

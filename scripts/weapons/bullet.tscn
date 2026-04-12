@@ -1,28 +1,24 @@
 [gd_scene format=3 uid="uid://c54pcen2rp4i0"]
 
-[ext_resource type="Script" uid="uid://u786b76cgebw" path="res://scripts/weapons/bullet.gd" id="1_dyxvc"]
+[ext_resource type="Script" uid="uid://bnfp4id8q6o4t" path="res://scripts/weapons/projectile.gd" id="1_dyxvc"]
+[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="2_dyxvc"]
 [ext_resource type="Texture2D" uid="uid://bpyo0lyyun61f" path="res://assets/sprites/weapon/pellet.png" id="2_po0p4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cq0wd"]
-radius = 4.1231055
+[sub_resource type="CircleShape2D" id="CircleShape2D_po0p4"]
+radius = 4.0
 
-[node name="Bullet" type="Area2D" unique_id=1355173961 groups=["attack"]]
+[node name="Bullet" type="Node2D" unique_id=1485530445]
 top_level = true
-collision_layer = 2
-collision_mask = 4
 script = ExtResource("1_dyxvc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1861889055]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_po0p4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284287792]
-visible = false
-shape = SubResource("CircleShape2D_cq0wd")
+[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("2_dyxvc")]
+collision_mask = 4
 
-[node name="DespawnTimer" type="Timer" parent="." unique_id=1634826371]
-wait_time = 3.0
-one_shot = true
-autostart = true
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
+shape = SubResource("CircleShape2D_po0p4")
 
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[editable path="Hitbox"]

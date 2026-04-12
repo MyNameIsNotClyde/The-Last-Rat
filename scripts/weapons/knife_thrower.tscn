@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bpivcv7dux2fp"]
+
+[ext_resource type="Script" uid="uid://vtmbcrbajxg6" path="res://scripts/weapons/knife_thrower.gd" id="1_v7beu"]
+[ext_resource type="AudioStream" uid="uid://d2d2uqw00w01a" path="res://assets/sfx/Knife Throw.mp3" id="2_3wd1l"]
+
+[node name="KnifeThrower" type="Node2D" unique_id=1172546725]
+script = ExtResource("1_v7beu")
+
+[node name="ThrowSound" type="AudioStreamPlayer" parent="." unique_id=1977074453]
+stream = ExtResource("2_3wd1l")
+volume_db = -10.0

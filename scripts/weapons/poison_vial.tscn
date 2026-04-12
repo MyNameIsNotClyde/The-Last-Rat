@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ds3jgts2pw8p1"]
+
+[ext_resource type="Script" uid="uid://hdl5l2gjw4wx" path="res://scripts/weapons/poison_vial.gd" id="1_jus0w"]
+[ext_resource type="Texture2D" uid="uid://dlui7l07ac3fj" path="res://assets/sprites/weapon/poison_vial.png" id="2_clt4f"]
+[ext_resource type="Texture2D" uid="uid://dvwgvin30iu4u" path="res://assets/sprites/weapon/poison_pool.png" id="3_4vna0"]
+[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_4vna0"]
+[ext_resource type="AudioStream" uid="uid://cxrme0fv756n1" path="res://assets/sfx/Potion Splash.mp3" id="4_361cf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vna0"]
+radius = 14.0
+height = 64.0
+
+[node name="Poison Vial" type="Node2D" unique_id=341954655]
+top_level = true
+script = ExtResource("1_jus0w")
+
+[node name="SpriteVial" type="Sprite2D" parent="." unique_id=1094168658]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_clt4f")
+offset = Vector2(-5, -25)
+
+[node name="SpritePool" type="Sprite2D" parent="." unique_id=123873484]
+z_index = -1
+texture = ExtResource("3_4vna0")
+
+[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_4vna0")]
+collision_mask = 4
+hitbox_type = 2
+cooldown_length = 0.15
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4vna0")
+disabled = true
+
+[node name="SoundSplash" type="AudioStreamPlayer" parent="." unique_id=746555526]
+stream = ExtResource("4_361cf")
+volume_db = -15.0
+
+[node name="TimerTravel" type="Timer" parent="." unique_id=281962007]
+one_shot = true
+autostart = true
+
+[node name="TimerDuration" type="Timer" parent="." unique_id=1486274767]
+one_shot = true
+
+[node name="TimerFade" type="Timer" parent="." unique_id=1615997978]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TimerTravel" to="." method="_on_timer_travel_timeout"]
+[connection signal="timeout" from="TimerDuration" to="." method="_on_timer_duration_timeout"]
+[connection signal="timeout" from="TimerFade" to="." method="despawn"]
+
+[editable path="Hitbox"]
