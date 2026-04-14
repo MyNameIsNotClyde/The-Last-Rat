@@ -9,10 +9,10 @@ var level = 1
 
 func _ready() -> void:
 	set_exp_bar(experience, get_xp_lvl_up_req())
-	add_weapon("shotgun", 0)
-	add_weapon("crossbow", 0)
+	add_weapon("shotgun", 1)
+	add_weapon("crossbow", 1)
 	add_weapon("knife_thrower", 1)
-	add_weapon("poison_vial_thrower", 0)
+	add_weapon("poison_vial_thrower", 1)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO

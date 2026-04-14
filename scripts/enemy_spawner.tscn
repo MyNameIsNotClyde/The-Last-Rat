@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dq867atutqcc2" path="res://scripts/enemy_spawner.gd" id="1_juo5f"]
 [ext_resource type="Script" uid="uid://cgoluqakvr7x2" path="res://scripts/util/spawnInfo.gd" id="2_jv7hw"]
-[ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/grunt.tscn" id="3_vank4"]
+[ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/enemies/grunt.tscn" id="3_vank4"]
 
 [sub_resource type="Resource" id="Resource_jv7hw"]
 script = ExtResource("2_jv7hw")

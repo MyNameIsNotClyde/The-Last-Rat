@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwbjrfvu80m0t" path="res://scripts/player.tscn" id="1_u0x2w"]
 [ext_resource type="Texture2D" uid="uid://b4tuioimse7tk" path="res://assets/sprites/Tile.png" id="1_uxu58"]
-[ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/grunt.tscn" id="2_ras4o"]
+[ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/enemies/grunt.tscn" id="2_ras4o"]
 [ext_resource type="PackedScene" uid="uid://cyd4lmdk0gw7v" path="res://scripts/enemy_spawner.tscn" id="2_u0x2w"]
 [ext_resource type="Script" uid="uid://cgoluqakvr7x2" path="res://scripts/util/spawnInfo.gd" id="3_58uta"]
 

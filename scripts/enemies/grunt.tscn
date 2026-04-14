@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://qjsdrsyexuqn"]
 
-[ext_resource type="Script" uid="uid://ccwdw7wqatvi" path="res://scripts/grunt.gd" id="1_vmsix"]
-[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_ucum5"]
-[ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_nyp1q"]
-[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_57po7"]
+[ext_resource type="Script" uid="uid://ccwdw7wqatvi" path="res://scripts/enemies/enemy.gd" id="1_qsa8t"]
+[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_puclx"]
+[ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_sbwg2"]
+[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_j5wh0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_066se"]
 radius = 3.0
@@ -18,11 +18,15 @@ size = Vector2(10, 20)
 [node name="Grunt" type="CharacterBody2D" unique_id=871270266]
 collision_layer = 5
 motion_mode = 1
-script = ExtResource("1_vmsix")
+script = ExtResource("1_qsa8t")
+speed = 20
+health = 20.0
+kb_recovery = 4.0
+loot_exp = 1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456035173]
-texture = ExtResource("2_ucum5")
+texture = ExtResource("2_puclx")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489190177]
@@ -33,14 +37,14 @@ shape = SubResource("CapsuleShape2D_066se")
 wait_time = 0.2
 one_shot = true
 
-[node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_nyp1q")]
+[node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_sbwg2")]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1489616137]
 shape = SubResource("RectangleShape2D_0an0k")
 
-[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_57po7")]
+[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_j5wh0")]
 visible = false
 collision_mask = 2
 hitbox_type = 1
