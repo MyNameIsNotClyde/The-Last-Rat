@@ -19,6 +19,7 @@ func set_props(gpos,ang,spd,dur,dmg,kbp,siz):
 
 func _ready() -> void:
 	$Hitbox.kb_angle = angle
+	$Hitbox.connect("enemy_hit", enemy_hit)
 	$Sprite2D.rotation = angle.angle() + PI/2
 	var despawnTimer = Timer.new()
 	despawnTimer.name = "DespawnTimer"

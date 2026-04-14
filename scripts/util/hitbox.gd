@@ -14,6 +14,8 @@ var kb_angle: Vector2 = Vector2.ZERO # Knockback angle
 var _hit_once_list = []
 var _cooldown_each_list = []
 
+signal enemy_hit(toughness)
+
 class HurtboxCooldown extends Timer:
 	var hurtbox: Area2D
 	signal timeout_custom(hbox)
@@ -58,10 +60,7 @@ func _on_area_entered(area: Area2D) -> void:
 			_cooldown_each_list.append(new_hurtbox_timer)
 			new_hurtbox_timer.start()
 	area.emit_signal("hurt", damage, kb_power, kb_angle)
-	enemy_hit(area.toughness if area.get("toughness") != null else 1)
-
-func enemy_hit(_toughness):
-	pass
+	emit_signal("enemy_hit",area.toughness if area.get("toughness") != null else 1)
 
 func remove_from_hit_once_list(hurtbox_instance):
 	if not _hit_once_list.has(hurtbox_instance): return
