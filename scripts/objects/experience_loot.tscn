@@ -19,8 +19,8 @@ hframes = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1632045438]
 shape = SubResource("RectangleShape2D_ltfov")
 
-[node name="CollectSound" type="AudioStreamPlayer" parent="." unique_id=2030965560]
+[node name="SoundCollect" type="AudioStreamPlayer" parent="." unique_id=2030965560]
 stream = ExtResource("2_bfder")
 volume_db = -20.0
 
-[connection signal="finished" from="CollectSound" to="." method="_on_collect_sound_finished"]
+[connection signal="finished" from="SoundCollect" to="." method="_on_collect_sound_finished"]

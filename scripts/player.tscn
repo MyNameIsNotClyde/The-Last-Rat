@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bddmfg1lk353g" path="res://scripts/player.gd" id="1_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bwjhi3wn5mkse" path="res://assets/sprites/nazrin/nazrin.png" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_fhbv5"]
-[ext_resource type="PackedScene" uid="uid://3al6tm5dx0c6" path="res://scripts/util/enemy_detector.tscn" id="4_pqap4"]
+[ext_resource type="Script" uid="uid://dnlqm37m2alnn" path="res://scripts/util/enemy_detector.gd" id="4_0jhex"]
 [ext_resource type="PackedScene" uid="uid://c6b85tcewf83j" path="res://scripts/util/loot_collector.tscn" id="5_2c7ny"]
-[ext_resource type="PackedScene" uid="uid://p7r0aaolr0ch" path="res://scripts/hud/level_up_panel.tscn" id="6_0jhex"]
+[ext_resource type="Script" uid="uid://7iyynfub5mvl" path="res://scripts/util/weapon_manager.gd" id="6_38am0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
 radius = 3.0
@@ -21,18 +21,8 @@ thickness = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqap4"]
 size = Vector2(10, 20)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7ny"]
-draw_center = false
-border_width_left = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_0jhex"]
-color = Color(0.33169833, 0.53651005, 1, 1)
-grow_begin = -4.0
-grow_end = -4.0
-thickness = 28
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfidv"]
+radius = 400.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1141310792 groups=["player"]]
 motion_mode = 1
@@ -73,37 +63,24 @@ collision_mask = 4
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1489616137]
 shape = SubResource("RectangleShape2D_pqap4")
 
-[node name="EnemyDetector" parent="." unique_id=28083573 instance=ExtResource("4_pqap4")]
+[node name="EnemyDetector" type="Area2D" parent="." unique_id=185967240]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_0jhex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector" unique_id=1583661816]
 visible = false
+shape = SubResource("CircleShape2D_xfidv")
 
 [node name="LootCollector" parent="." unique_id=754517485 instance=ExtResource("5_2c7ny")]
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=790993078]
-
-[node name="ExperienceBar" type="ProgressBar" parent="HUD" unique_id=176486743]
-unique_name_in_owner = true
-offset_right = 640.0
-offset_bottom = 32.0
-theme_override_styles/background = SubResource("StyleBoxFlat_2c7ny")
-theme_override_styles/fill = SubResource("StyleBoxLine_0jhex")
-show_percentage = false
-
-[node name="LevelLabel" type="Label" parent="HUD/ExperienceBar" unique_id=2118679912]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 540.0
-offset_right = 640.0
-offset_bottom = 32.0
-text = "Level 1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelUpPanel" parent="HUD" unique_id=498749947 instance=ExtResource("6_0jhex")]
-unique_name_in_owner = true
-visible = false
+[node name="WeaponManager" type="Node2D" parent="." unique_id=1988781628]
+script = ExtResource("6_38am0")
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="body_entered" from="EnemyDetector" to="EnemyDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyDetector" to="EnemyDetector" method="_on_body_exited"]
 [connection signal="exp_gain" from="LootCollector" to="." method="_on_loot_collector_exp_gain"]
-[connection signal="upgrade_selected" from="HUD/LevelUpPanel" to="." method="upgrade"]
+[connection signal="gold_gain" from="LootCollector" to="." method="_on_loot_collector_gold_gain"]
 
 [editable path="Hurtbox"]

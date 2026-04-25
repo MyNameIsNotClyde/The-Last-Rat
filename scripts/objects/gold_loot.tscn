@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://belpky7y5v0yn"]
+
+[ext_resource type="Script" uid="uid://y0c5w2vmy62s" path="res://scripts/objects/gold_loot.gd" id="1_g4cnn"]
+[ext_resource type="AudioStream" uid="uid://b0mmhy0f1bir4" path="res://assets/sfx/Coin.mp3" id="2_g4cnn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x5yse"]
+load_path = "res://.godot/imported/gold.png-c9486b6d2b144dc0f2b6faa5d7a615d4.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4cnn"]
+
+[node name="GoldLoot" type="Area2D" unique_id=1924629337 groups=["loot"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_g4cnn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753285716]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("CompressedTexture2D_x5yse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1376670421]
+shape = SubResource("CircleShape2D_g4cnn")
+
+[node name="SoundCollect" type="AudioStreamPlayer" parent="." unique_id=530785220]
+stream = ExtResource("2_g4cnn")
+volume_db = -20.0
+
+[connection signal="finished" from="SoundCollect" to="." method="_on_audio_stream_player_finished"]

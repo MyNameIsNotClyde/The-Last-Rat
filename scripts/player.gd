@@ -1,18 +1,25 @@
 extends CharacterBody2D
 
-@export var speed = 100
-@export var max_health = 100
-var health = 80
-var weapons: Array[Weapon] = []
-var experience = 0
 var level = 1
+var experience = 0
+var gold = 0
+
+var max_health: float = 100.0
+var health: float = max_health
+var regeneration: float = 0.0
+var speed: float = 80
+var might: float = 0.0 # Additional damage modifier
+var dexterity: float = 0.0 # Additional projectile speed modifier
+var area: float = 0.0 # Additional projectile size modifier
+var cooldown: float = 0.0 # Additional fire rate modifier
+var multi: int = 0 # Additional bullets fired / max ammo modifier
+
+@onready var hud = get_tree().get_first_node_in_group('hud')
+@onready var weapon_manager = $WeaponManager
 
 func _ready() -> void:
-	set_exp_bar(experience, get_xp_lvl_up_req())
-	add_weapon("shotgun", 1)
-	add_weapon("crossbow", 1)
-	add_weapon("knife_thrower", 1)
-	add_weapon("poison_vial_thrower", 1)
+	weapon_manager.detector = $EnemyDetector
+	weapon_manager.weapons["Shotgun"].upgrade_to(1)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -31,49 +38,29 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
-	attack()
-
-func attack():
-	for weapon in weapons:
-		match weapon.target_mode:
-			Weapon.TARGET_MODE.NONE:
-				weapon.shoot(null)
-			Weapon.TARGET_MODE.RANDOM:
-				weapon.shoot($EnemyDetector.get_random_enemy(weapon.target_range))
-			Weapon.TARGET_MODE.CLOSEST:
-				weapon.shoot($EnemyDetector.get_closest_enemy(weapon.target_range))
+	$WeaponManager.attack()
 
 func _on_hurtbox_hurt(damage: int, _kb_power, _kb_angle) -> void:
 	health -= damage
-	print(health)
-
-func add_weapon(weapon_name: String, weapon_level: int):
-	var weapon = load("res://scripts/weapons/%s.tscn"%weapon_name).instantiate()
-	weapon.set_level(weapon_level)
-	add_child(weapon)
-	weapons.append(weapon)
+	$HealthBar.value = health * 100.0 / max_health
 
 func _on_loot_collector_exp_gain(amount: int) -> void:
 	var experience_needed_to_level_up = get_xp_lvl_up_req()
-	var level_before_collect = level
 	experience += amount
 	while experience >= experience_needed_to_level_up:
 		# Level up
 		level += 1
-		$%LevelLabel.text = str("Level ",level)
+		hud.leveled_up()
+		hud.experience_bar_label.text = str("Level ",level)
 		experience -= experience_needed_to_level_up
 		experience_needed_to_level_up = get_xp_lvl_up_req()
-	set_exp_bar(experience, experience_needed_to_level_up)
-	$%LevelUpPanel.level_up_queue = level - level_before_collect
-	$%LevelUpPanel.display_level_up_screen()
+	hud.set_experience_bar(experience, experience_needed_to_level_up)
+	hud.level_up_panel.display_level_up_screen()
+
+func _on_loot_collector_gold_gain(amount: int) -> void:
+	gold += amount
 
 func get_xp_lvl_up_req() -> int:
 	if level < 20: return level*5
 	if level < 40: return 95 + (level-19)*8
 	return 255 + (level-39)*12
-
-func set_exp_bar(value, max_value):
-	$%ExperienceBar.value = value * 100.0 / max_value
-
-func upgrade(upgrade_object) -> void:
-	pass

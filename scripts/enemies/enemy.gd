@@ -11,7 +11,7 @@ var is_dead = false
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var loot_pool = get_tree().get_first_node_in_group("loot")
 var loot_exp_obj = preload("res://scripts/objects/experience_loot.tscn")
-var loot_gold_obj
+var loot_gold_obj = preload("res://scripts/objects/gold_loot.tscn")
 
 func _physics_process(_delta: float) -> void:
 	kb_force = kb_force.move_toward(Vector2.ZERO, kb_recovery)
@@ -43,6 +43,12 @@ func death():
 	new_loot_exp.global_position = global_position
 	new_loot_exp.experience_amount = loot_exp
 	loot_pool.call_deferred("add_child", new_loot_exp)
+	var new_loot_gold = loot_gold_obj.instantiate()
+	var random_radius = 20 * sqrt(randf())
+	var random_angle = 2*PI * randf()
+	new_loot_gold.global_position = global_position + random_radius*Vector2.from_angle(random_angle)
+	new_loot_gold.gold_amount = loot_gold
+	loot_pool.call_deferred("add_child", new_loot_gold)
 	var hurtbox = $Hurtbox
 	hurtbox.emit_signal("node_freed", hurtbox)
 	queue_free()

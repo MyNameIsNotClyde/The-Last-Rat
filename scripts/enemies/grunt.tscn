@@ -23,6 +23,7 @@ speed = 20
 health = 20.0
 kb_recovery = 4.0
 loot_exp = 1
+loot_gold = 1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456035173]

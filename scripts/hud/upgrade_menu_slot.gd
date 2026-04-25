@@ -3,5 +3,11 @@ extends Button
 var object
 signal upgrade_selected(upgrade_object)
 
+func _ready() -> void:
+	$LabelName.text = object["name"]
+	$LabelDescription.text = object["description"]
+	$LabelLevel.text = "Level " + str(object["level"])
+	$UpgradeIconBackground/UpgradeIcon.texture = object["icon"]
+
 func _on_pressed() -> void:
 	emit_signal("upgrade_selected", object)
