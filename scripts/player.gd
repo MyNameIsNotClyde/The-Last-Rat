@@ -4,15 +4,16 @@ var level = 1
 var experience = 0
 var gold = 0
 
-var max_health: float = 100.0
+var max_health: float = 50.0
 var health: float = max_health
 var regeneration: float = 0.0
-var speed: float = 80
-var might: float = 0.0 # Additional damage modifier
-var dexterity: float = 0.0 # Additional projectile speed modifier
-var area: float = 0.0 # Additional projectile size modifier
-var cooldown: float = 0.0 # Additional fire rate modifier
-var multi: int = 0 # Additional bullets fired / max ammo modifier
+var armour: int = 0
+var speed: float = 80.0
+var might: float = 1.0 # Damage modifier
+var dexterity: float = 1.0 # Projectile speed modifier
+var area: float = 1.0 # Projectile size modifier
+var cooldown: float = 1.0 # Fire interval modifier
+var multi: int = 0 # Projectile amount modifier
 
 @onready var hud = get_tree().get_first_node_in_group('hud')
 @onready var weapon_manager = $WeaponManager
@@ -41,8 +42,12 @@ func _process(_delta: float) -> void:
 	$WeaponManager.attack()
 
 func _on_hurtbox_hurt(damage: int, _kb_power, _kb_angle) -> void:
-	health -= damage
-	$HealthBar.value = health * 100.0 / max_health
+	health -= max(damage - armour, 1.0)
+	set_health_bar()
+
+func set_health_bar():
+	$HealthBar.value = health
+	$HealthBar.max_value = max_health
 
 func _on_loot_collector_exp_gain(amount: int) -> void:
 	var experience_needed_to_level_up = get_xp_lvl_up_req()

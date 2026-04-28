@@ -20,6 +20,9 @@ func _ready() -> void:
 	tween.parallel().tween_method(lerp_position_y.bind(global_position.y).bind(initial_velocity_y), 0.0, 1.0, 1.0)
 	tween.parallel().tween_property($SpriteVial, "rotation", target_rotation, 1.0)
 
+func _physics_process(_delta: float) -> void:
+	pass
+
 func enemy_hit(_charge = 1):
 	pass
 

@@ -6,8 +6,8 @@ enum HITBOX_TYPE { HIT_ONCE, COOLDOWN, COOLDOWN_EACH }
 ## cooldown each: similar to cooldown but independent for each hurtbox
 
 @export var hitbox_type: HITBOX_TYPE = HITBOX_TYPE.HIT_ONCE
-@export var damage: int = 1
-var kb_power: int = 100 # Knockback power
+@export var damage: float = 1.0
+var kb_power: float = 100.0 # Knockback power
 var kb_angle: Vector2 = Vector2.ZERO # Knockback angle
 @export var cooldown_length: float = 0.5 # Ignored in hitbox type "hit once"
 

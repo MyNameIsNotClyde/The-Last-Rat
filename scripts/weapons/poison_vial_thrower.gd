@@ -6,57 +6,51 @@ var proj_damage_interval: float
 func _ready() -> void:
 	weapon_name = "Poison Vials"
 	weapon_icon = preload("res://assets/sprites/upgrades/poison_vial.png")
-	max_ammo = 1
-	shoot_time = 0.0
-	reload_time = 2.0
 	target_mode = TARGET_MODE.RANDOM
 	target_range = 100
 	projectile = preload("res://scripts/weapons/poison_vial.tscn")
-	proj_durability = 0
-	proj_speed = 100
-	proj_kb_power = 0
-	proj_duration = 3.0
-	proj_damage = 1.0
-	proj_damage_interval = 0.15
-	proj_size = 1.0
+	base_stats = {
+		"max_ammo": 1,
+		"shoot_time": 0.4,
+		"reload_time": 2.0,
+		"proj_damage": 3.0,
+		"proj_damage_interval": 0.5,
+		"proj_duration": 3.0,
+		"proj_speed": 100.0,
+		"proj_durability": 0.0,
+		"proj_kb_power": 0,
+		"proj_size": 1.0
+	}
 	super()
 
-const UPGRADE_TABLE = {
-	1: {
+const UPGRADE_TABLE = [
+	{
 		"level": 1,
 		"description": "Throw a vial of poison that lingers on the ground.",
 		"effects": {}
 	},
-	2: {
+	{
 		"level": 2,
 		"description": "Increase the range of the throw by 50%.",
 		"effects": {
 			"target_range" = 150
 		}
 	},
-	3: {
+	{
 		"level": 3,
 		"description": "The pool of poison lasts 50% longer.",
 		"effects": {
 			"proj_duration": 4.5
 		}
 	},
-	4: {
+	{
 		"level": 4,
-		"description": "An added accelerant increases the poison damage rate by 66%.",
+		"description": "An added accelerant increases the poison damage rate by 33%.",
 		"effects": {
-			"proj_damage_interval": 0.1,
+			"proj_damage_interval": 0.4,
 		}
 	}
-}
-
-func upgrade_to(new_level: int):
-	if (level >= new_level): return
-	for i in range(level, new_level):
-		var upgrade_effects = UPGRADE_TABLE[i+1]["effects"]
-		for property in upgrade_effects:
-			set(property, upgrade_effects[property])
-	level = new_level
+]
 
 func shoot(target: Node2D):
 	if target == null: return # Check if there is a target
@@ -78,7 +72,8 @@ func shoot(target: Node2D):
 	add_child(vial)
 	ammo -= 1
 	$ThrowSound.play()
-	$ReloadTimer.start()
+	$ShootTimer.start(shoot_time)
+	$ReloadTimer.start(reload_time)
 
 func reload():
 	ammo = max_ammo

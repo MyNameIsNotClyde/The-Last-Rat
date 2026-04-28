@@ -1,9 +1,8 @@
 class_name Projectile extends Node2D
 
 var durability: int # Piercing power
-var speed: int # Travel speed, in pixels per second
+var speed: float # Travel speed, in pixels per second
 var angle: Vector2 # Travel angle
-var size: float # Size modifier
 var despawn_time: float = 4.0
 
 signal node_freed(obj)
@@ -13,9 +12,9 @@ func set_props(gpos,ang,spd,dur,dmg,kbp,siz):
 	angle = ang
 	speed = spd
 	durability = dur
-	size = siz
 	$Hitbox.damage = dmg
 	$Hitbox.kb_power = kbp
+	scale = Vector2(1,1) * siz
 
 func _ready() -> void:
 	$Hitbox.kb_angle = angle

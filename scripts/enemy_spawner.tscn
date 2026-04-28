@@ -1,16 +1,6 @@
 [gd_scene format=3 uid="uid://cyd4lmdk0gw7v"]
 
 [ext_resource type="Script" uid="uid://dq867atutqcc2" path="res://scripts/enemy_spawner.gd" id="1_juo5f"]
-[ext_resource type="Script" uid="uid://cgoluqakvr7x2" path="res://scripts/util/spawnInfo.gd" id="2_jv7hw"]
-[ext_resource type="PackedScene" uid="uid://qjsdrsyexuqn" path="res://scripts/enemies/grunt.tscn" id="3_vank4"]
-
-[sub_resource type="Resource" id="Resource_jv7hw"]
-script = ExtResource("2_jv7hw")
-time_end = 60
-enemy = ExtResource("3_vank4")
-spawn_amount = 5
-spawn_interval = 1
-metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [sub_resource type="Curve2D" id="Curve2D_v04pb"]
 _data = {
@@ -20,15 +10,9 @@ point_count = 5
 
 [node name="EnemySpawner" type="Node2D" unique_id=309922029]
 script = ExtResource("1_juo5f")
-spawns = Array[ExtResource("2_jv7hw")]([SubResource("Resource_jv7hw")])
-
-[node name="SpawnTimer" type="Timer" parent="." unique_id=1597128591]
-autostart = true
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1136686458]
 curve = SubResource("Curve2D_v04pb")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1446546834]
 position = Vector2(-340, -200)
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

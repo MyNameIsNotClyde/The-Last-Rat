@@ -9,10 +9,28 @@
 
 [sub_resource type="Resource" id="Resource_uxu58"]
 script = ExtResource("3_58uta")
-time_end = 60
+time_end = 20.0
 enemy = ExtResource("2_ras4o")
 spawn_amount = 3
-spawn_interval = 2
+spawn_interval = 2.0
+metadata/_custom_type_script = "uid://cgoluqakvr7x2"
+
+[sub_resource type="Resource" id="Resource_ule47"]
+script = ExtResource("3_58uta")
+time_start = 20.0
+time_end = 60.0
+enemy = ExtResource("2_ras4o")
+spawn_amount = 3
+spawn_interval = 1.0
+metadata/_custom_type_script = "uid://cgoluqakvr7x2"
+
+[sub_resource type="Resource" id="Resource_22ew4"]
+script = ExtResource("3_58uta")
+time_start = 60.0
+time_end = 180.0
+enemy = ExtResource("2_ras4o")
+spawn_amount = 5
+spawn_interval = 1.0
 metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [node name="World" type="Node2D" unique_id=2080132789]
@@ -28,7 +46,7 @@ stretch_mode = 1
 [node name="Player" parent="." unique_id=1141310792 instance=ExtResource("1_u0x2w")]
 
 [node name="EnemySpawner" parent="." unique_id=309922029 instance=ExtResource("2_u0x2w")]
-spawns = Array[ExtResource("3_58uta")]([SubResource("Resource_uxu58")])
+spawns = Array[ExtResource("3_58uta")]([SubResource("Resource_uxu58"), SubResource("Resource_ule47"), SubResource("Resource_22ew4")])
 
 [node name="LootPool" type="Node2D" parent="." unique_id=1534728463 groups=["loot"]]
 

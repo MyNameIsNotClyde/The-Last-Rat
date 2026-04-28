@@ -6,28 +6,30 @@ var spread_amount: int
 func _ready() -> void:
 	weapon_name = "Shotgun"
 	weapon_icon = preload("res://assets/sprites/upgrades/shotgun.png")
-	max_ammo = 2
-	shoot_time = 0.8
-	reload_time = 2.0
 	target_mode = TARGET_MODE.CLOSEST
 	target_range = 100
-	spread_angle = 20.0
-	spread_amount = 3
 	projectile = preload("res://scripts/weapons/bullet.tscn")
-	proj_durability = 1
-	proj_speed = 400
-	proj_damage = 5.0
-	proj_kb_power = 100
-	proj_size = 1.0
+	base_stats = {
+		"max_ammo": 2,
+		"shoot_time": 0.8,
+		"reload_time": 2.0,
+		"spread_angle": 20.0,
+		"spread_amount": 3,
+		"proj_damage": 5.0,
+		"proj_speed": 400.0,
+		"proj_durability": 1,
+		"proj_kb_power": 100.0,
+		"proj_size": 1.0
+	}
 	super()
 
-const UPGRADE_TABLE = {
-	1: {
+const UPGRADE_TABLE = [
+	{
 		"level": 1,
 		"description": "A close range double-barrel shotgun that shoots a spread of bullets.",
 		"effects": {}
 	},
-	2: {
+	{
 		"level": 2,
 		"description": "The shots become denser, with 2 more bullets per shot.",
 		"effects": {
@@ -35,29 +37,21 @@ const UPGRADE_TABLE = {
 			"spread_amount": 5,
 		}
 	},
-	3: {
+	{
 		"level": 3,
 		"description": "The bullets gain piercing power, now pierces through 1 enemy.",
 		"effects": {
 			"proj_durability": 2,
 		}
 	},
-	4: {
+	{
 		"level": 4,
 		"description": "The shotgun becomes triple-barrel, shooting 1 more time before reloading.",
 		"effects": {
 			"max_ammo": 3,
 		}
 	}
-}
-
-func upgrade_to(new_level: int):
-	if (level >= new_level): return
-	for i in range(level, new_level):
-		var upgrade_effects = UPGRADE_TABLE[i+1]["effects"]
-		for property in upgrade_effects:
-			set(property, upgrade_effects[property])
-	level = new_level
+]
 
 func shoot(target: Node2D):
 	if target == null: return # Check if there is a target
@@ -81,8 +75,8 @@ func shoot(target: Node2D):
 		add_child(bullet)
 	ammo -= 1
 	$ShootSound.play()
-	$ShootTimer.start()
-	$ReloadTimer.start()
+	$ShootTimer.start(shoot_time)
+	$ReloadTimer.start(reload_time)
 
 func reload():
 	ammo = 0

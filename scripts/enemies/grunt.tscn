@@ -49,6 +49,7 @@ shape = SubResource("RectangleShape2D_0an0k")
 visible = false
 collision_mask = 2
 hitbox_type = 1
+damage = 2.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
 shape = SubResource("RectangleShape2D_nyp1q")
