@@ -73,6 +73,7 @@ visible = false
 shape = SubResource("CircleShape2D_xfidv")
 
 [node name="LootCollector" parent="." unique_id=754517485 instance=ExtResource("5_2c7ny")]
+visible = false
 
 [node name="WeaponManager" type="Node2D" parent="." unique_id=1988781628]
 script = ExtResource("6_38am0")

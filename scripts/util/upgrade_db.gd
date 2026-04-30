@@ -13,56 +13,48 @@ const ITEM_LIST = [
 		"name": "Medical Cheese",
 		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Heals for 20 health.",
 		"weight": 60
 	}, {
 		"name": "Magnifying Glass",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"icon": preload("res://assets/sprites/upgrades/spyglass.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Increases projectile size by 10% per stack.",
 		"weight": 40
 	}, {
 		"name": "Iron Plating",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"icon": preload("res://assets/sprites/upgrades/armour.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Reduces incoming damage by 1 per stack, to a minimum of 1.",
 		"weight": 60
 	}, {
 		"name": "Dusty Boots",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"icon": preload("res://assets/sprites/upgrades/boots.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Increases movement speed by 25% per stack.",
 		"weight": 60
 	}, {
 		"name": "Ergonomic Grip",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"icon": preload("res://assets/sprites/upgrades/grip.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Decreases cooldown by 5% per stack.",
 		"weight": 40
 	}, {
 		"name": "Silver alloy",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"icon": preload("res://assets/sprites/upgrades/silver.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Increases damage by 10% per stack.",
 		"weight": 30
 	}, {
 		"name": "Compact Ammo",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"icon": preload("res://assets/sprites/upgrades/ammo_box.png"),
 		"type": "item",
-		"level": 0,
-		"description": "Increases projectile amount per volley by 1.",
+		"description": "Increases projectile amount per volley by 1 per stack.",
 		"weight": 20
 	}, {
 		"name": "Ribbon",
 		"icon": preload("res://assets/sprites/upgrades/ribbon.png"),
 		"type": "item",
-		"level": 0,
 		"description": "Does nothing. Looks cute on you though.",
 		"weight": 0
 	}

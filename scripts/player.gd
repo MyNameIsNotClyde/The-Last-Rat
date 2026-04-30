@@ -17,10 +17,18 @@ var multi: int = 0 # Projectile amount modifier
 
 @onready var hud = get_tree().get_first_node_in_group('hud')
 @onready var weapon_manager = $WeaponManager
+@onready var starting_weapon = weapon_manager.weapons["Shotgun"]
 
 func _ready() -> void:
 	weapon_manager.detector = $EnemyDetector
-	weapon_manager.weapons["Shotgun"].upgrade_to(1)
+	starting_weapon.upgrade_to(1)
+	await hud.ready
+	hud.add_to_collection({
+		"name": starting_weapon.weapon_name,
+		"icon": starting_weapon.weapon_icon,
+		"level": 1,
+		"type": "weapon"
+		})
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -55,7 +63,7 @@ func _on_loot_collector_exp_gain(amount: int) -> void:
 	while experience >= experience_needed_to_level_up:
 		# Level up
 		level += 1
-		hud.leveled_up()
+		hud.level_up_panel.queue += 1
 		hud.experience_bar_label.text = str("Level ",level)
 		experience -= experience_needed_to_level_up
 		experience_needed_to_level_up = get_xp_lvl_up_req()

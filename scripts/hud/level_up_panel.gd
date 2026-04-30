@@ -4,11 +4,15 @@ var queue = 0
 var selected_index = 0
 @onready var upgrade_slot = preload("res://scripts/hud/upgrade_menu_slot.tscn")
 @onready var player = get_tree().get_first_node_in_group("player")
+var collected_item_amount = {}
+
+signal upgrade_selected(upgrade_obj)
 
 '''
 Upgrade object interface:
 	name - name of upgrade
 	icon - path to upgrade icon
+	type - if the upgrade is of a weapon or item
 	level - 0 if the level label should not be displayed
 	description - description text
 '''
@@ -32,7 +36,9 @@ func get_random_upgrades(amount: int) -> Array:
 	for item in UpgradeDB.ITEM_LIST:
 		item_weights.append(item["weight"])
 	for i in range(amount-len(upgrades)):
-		upgrades.append(UpgradeDB.ITEM_LIST[rng.rand_weighted(item_weights)])
+		var upgrade_chosen = UpgradeDB.ITEM_LIST[rng.rand_weighted(item_weights)].duplicate()
+		upgrade_chosen["level"] = collected_item_amount[upgrade_chosen["name"]]+1 if upgrade_chosen["name"] in collected_item_amount else 1
+		upgrades.append(upgrade_chosen)
 	if len(upgrades) < 3:
 		upgrades.append(UpgradeDB.ITEM_LIST[-1])
 	return upgrades
@@ -57,11 +63,16 @@ func display_level_up_screen() -> void:
 	get_tree().paused = true
 
 func upgrade_selected_handler(upgrade_object) -> void:
+	emit_signal("upgrade_selected", upgrade_object)
 	if upgrade_object["type"] == "weapon":
 		var weapon = player.weapon_manager.weapons[upgrade_object["name"]]
 		weapon.upgrade_to(upgrade_object["level"])
 		weapon.update_stats(player)
 	elif upgrade_object["type"] == "item":
+		if upgrade_object["name"] in collected_item_amount:
+			collected_item_amount[upgrade_object["name"]] += 1
+		else:
+			collected_item_amount[upgrade_object["name"]] = 1
 		UpgradeDB.apply_item_effects(player, upgrade_object)
 		for weapon in player.weapon_manager.weapons.values():
 			weapon.update_stats(player)
