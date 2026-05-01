@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6wcfj5pnf2op" path="res://scripts/hud/hud.gd" id="1_7u7h5"]
 [ext_resource type="PackedScene" uid="uid://p7r0aaolr0ch" path="res://scripts/hud/level_up_panel.tscn" id="1_jf1ws"]
+[ext_resource type="Texture2D" uid="uid://dmi1rif8oigj7" path="res://assets/sprites/gold.png" id="2_hkl3l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7ny"]
 draw_center = false
@@ -49,8 +50,21 @@ text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelUpPanel" parent="." unique_id=498749947 instance=ExtResource("1_jf1ws")]
-visible = false
+[node name="GoldLabel" type="Label" parent="." unique_id=977081670]
+offset_left = 600.0
+offset_top = 40.0
+offset_right = 636.0
+offset_bottom = 64.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="GoldLabel" unique_id=49279071]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 5.0
+offset_right = 144.0
+offset_bottom = 165.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_hkl3l")
 
 [node name="CollectedWeapons" type="HBoxContainer" parent="." unique_id=1419089246]
 offset_left = 8.0
@@ -64,4 +78,63 @@ offset_top = 56.0
 offset_right = 208.0
 offset_bottom = 72.0
 
+[node name="LevelUpPanel" parent="." unique_id=498749947 instance=ExtResource("1_jf1ws")]
+visible = false
+
+[node name="ResultPanel" type="Panel" parent="." unique_id=656934536]
+process_mode = 2
+visible = false
+offset_left = 220.0
+offset_top = -400.0
+offset_right = 420.0
+offset_bottom = -150.0
+
+[node name="TitleLabel" type="Label" parent="ResultPanel" unique_id=171187005]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="ResultPanel" unique_id=1759168901]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 56.0
+offset_right = 180.0
+offset_bottom = 80.0
+text = "Time: 0"
+
+[node name="LevelLabel" type="Label" parent="ResultPanel" unique_id=455139550]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 86.0
+offset_right = 180.0
+offset_bottom = 110.0
+text = "Level: 0"
+
+[node name="GoldLabel" type="Label" parent="ResultPanel" unique_id=482727013]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 116.0
+offset_right = 180.0
+offset_bottom = 140.0
+text = "Gold: 0"
+
+[node name="ToMenuButton" type="Button" parent="ResultPanel" unique_id=439648002]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back to Menu"
+
 [connection signal="upgrade_selected" from="LevelUpPanel" to="." method="add_to_collection"]
+[connection signal="pressed" from="ResultPanel/ToMenuButton" to="." method="_on_to_menu_button_pressed"]

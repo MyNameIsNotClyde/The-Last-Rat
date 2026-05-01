@@ -29,18 +29,21 @@ func get_random_upgrades(amount: int) -> Array:
 			upgrade_info["type"] = "weapon"
 			weapon_pool.append(upgrade_info)
 	weapon_pool.shuffle()
-	upgrades = weapon_pool.slice(0, amount - randi_range(0, 1))
+	upgrades = weapon_pool.slice(0, amount - randi_range(0, 2))
 	if len(upgrades) == amount: return upgrades
 	var rng = RandomNumberGenerator.new()
 	var item_weights = []
 	for item in UpgradeDB.ITEM_LIST:
 		item_weights.append(item["weight"])
+	## FIX: Items displayed can be duplicate. 
 	for i in range(amount-len(upgrades)):
 		var upgrade_chosen = UpgradeDB.ITEM_LIST[rng.rand_weighted(item_weights)].duplicate()
 		upgrade_chosen["level"] = collected_item_amount[upgrade_chosen["name"]]+1 if upgrade_chosen["name"] in collected_item_amount else 1
 		upgrades.append(upgrade_chosen)
 	if len(upgrades) < 3:
-		upgrades.append(UpgradeDB.ITEM_LIST[-1])
+		var upgrade_placeholder = UpgradeDB.ITEM_LIST[-1]
+		upgrade_placeholder["level"] = 0
+		upgrades.append(upgrade_placeholder)
 	return upgrades
 
 func display_level_up_screen() -> void:

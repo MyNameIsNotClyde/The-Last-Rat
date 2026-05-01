@@ -3,6 +3,7 @@ class_name Enemy extends CharacterBody2D
 @export var speed: int
 @export var health: float
 @export var kb_recovery: float
+@export var damage: float
 @export var loot_exp: int
 @export var loot_gold: int
 var kb_force = Vector2.ZERO
@@ -12,6 +13,9 @@ var is_dead = false
 @onready var loot_pool = get_tree().get_first_node_in_group("loot")
 var loot_exp_obj = preload("res://scripts/objects/experience_loot.tscn")
 var loot_gold_obj = preload("res://scripts/objects/gold_loot.tscn")
+
+func _ready() -> void:
+	$Hitbox.damage = damage
 
 func _physics_process(_delta: float) -> void:
 	kb_force = kb_force.move_toward(Vector2.ZERO, kb_recovery)
@@ -30,8 +34,8 @@ func _physics_process(_delta: float) -> void:
 	velocity += kb_force
 	move_and_slide()
 
-func _on_hurtbox_hurt(damage: int, kb_power: int, kb_angle: Vector2) -> void:
-	health -= damage
+func _on_hurtbox_hurt(take_damage: int, kb_power: int, kb_angle: Vector2) -> void:
+	health -= take_damage
 	kb_force = kb_angle * kb_power
 	if health <= 0: death()
 

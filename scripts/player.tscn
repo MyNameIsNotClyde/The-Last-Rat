@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bddmfg1lk353g" path="res://scripts/player.gd" id="1_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bwjhi3wn5mkse" path="res://assets/sprites/nazrin/nazrin.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://c761dsivtbb4j" path="res://assets/sprites/explosion.png" id="3_38am0"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_fhbv5"]
 [ext_resource type="Script" uid="uid://dnlqm37m2alnn" path="res://scripts/util/enemy_detector.gd" id="4_0jhex"]
+[ext_resource type="AudioStream" uid="uid://dhu7gvpokbbfl" path="res://assets/sfx/Explosion.mp3" id="4_xfidv"]
 [ext_resource type="PackedScene" uid="uid://c6b85tcewf83j" path="res://scripts/util/loot_collector.tscn" id="5_2c7ny"]
 [ext_resource type="Script" uid="uid://7iyynfub5mvl" path="res://scripts/util/weapon_manager.gd" id="6_38am0"]
 
@@ -37,11 +39,28 @@ hframes = 4
 wait_time = 0.2
 one_shot = true
 
+[node name="ExplosionSprite2D" type="Sprite2D" parent="." unique_id=1219728019]
+process_mode = 2
+visible = false
+z_index = 1
+texture = ExtResource("3_38am0")
+hframes = 6
+vframes = 3
+
+[node name="FrameTimer" type="Timer" parent="ExplosionSprite2D" unique_id=1163023696]
+wait_time = 0.1
+one_shot = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="ExplosionSprite2D" unique_id=156240472]
+stream = ExtResource("4_xfidv")
+volume_db = -10.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906332483]
 visible = false
 shape = SubResource("CapsuleShape2D_op7ga")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=753810942]
+z_index = 1
 offset_left = -12.0
 offset_top = -18.0
 offset_right = 12.0
@@ -78,6 +97,7 @@ visible = false
 [node name="WeaponManager" type="Node2D" parent="." unique_id=1988781628]
 script = ExtResource("6_38am0")
 
+[connection signal="timeout" from="ExplosionSprite2D/FrameTimer" to="." method="continue_death_animation"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="body_entered" from="EnemyDetector" to="EnemyDetector" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetector" to="EnemyDetector" method="_on_body_exited"]

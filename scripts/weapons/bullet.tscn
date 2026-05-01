@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="2_dyxvc"]
 [ext_resource type="Texture2D" uid="uid://bpyo0lyyun61f" path="res://assets/sprites/weapon/pellet.png" id="2_po0p4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_po0p4"]
-size = Vector2(4, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_po0p4"]
+radius = 3.0
 
 [node name="Bullet" type="Node2D" unique_id=1485530445]
 top_level = true
 script = ExtResource("1_dyxvc")
-base_scale = Vector2(0.5, 0.5)
-base_size = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1861889055]
 scale = Vector2(0.5, 0.5)
@@ -21,6 +19,6 @@ texture = ExtResource("2_po0p4")
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
-shape = SubResource("RectangleShape2D_po0p4")
+shape = SubResource("CircleShape2D_po0p4")
 
 [editable path="Hitbox"]

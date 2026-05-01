@@ -20,8 +20,9 @@ collision_layer = 5
 motion_mode = 1
 script = ExtResource("1_qsa8t")
 speed = 20
-health = 20.0
+health = 10.0
 kb_recovery = 4.0
+damage = 2.0
 loot_exp = 1
 loot_gold = 1
 metadata/_edit_group_ = true
@@ -49,7 +50,6 @@ shape = SubResource("RectangleShape2D_0an0k")
 visible = false
 collision_mask = 2
 hitbox_type = 1
-damage = 2.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
 shape = SubResource("RectangleShape2D_nyp1q")

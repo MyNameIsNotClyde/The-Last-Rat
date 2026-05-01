@@ -36,6 +36,7 @@ metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 [node name="World" type="Node2D" unique_id=2080132789]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=743520770]
+z_index = -1
 offset_left = -1600.0
 offset_top = -1200.0
 offset_right = 1600.0
