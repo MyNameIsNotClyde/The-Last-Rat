@@ -23,6 +23,6 @@ func generate_random_spawn_position():
 	$Path2D/PathFollow2D.progress_ratio = randf()
 	var player_position = player.global_position
 	var base_position = $Path2D/PathFollow2D.position
-	base_position = base_position.move_toward(player_position, randf_range(-100, 0))
+	base_position = base_position.move_toward(Vector2.ZERO, randf_range(-100, 0))
 	return player_position + base_position
 	
