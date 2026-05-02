@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3366rhihhsn2"
-path="res://.godot/imported/cheese.png-d76a29ebff1abc9f6b5ba286e6695403.ctex"
+uid="uid://dimlv58vvjibq"
+path="res://.godot/imported/heart.png-eecd4bfd2b632a887f7ac2dafff3a1ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/upgrades/cheese.png"
-dest_files=["res://.godot/imported/cheese.png-d76a29ebff1abc9f6b5ba286e6695403.ctex"]
+source_file="res://assets/sprites/upgrades/heart.png"
+dest_files=["res://.godot/imported/heart.png-eecd4bfd2b632a887f7ac2dafff3a1ef.ctex"]
 
 [params]
 

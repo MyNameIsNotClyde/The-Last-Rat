@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwjhi3wn5mkse"
-path="res://.godot/imported/nazrin.png-aaca7f672210768c3b945454d558ae38.ctex"
+uid="uid://dv4a34nvy5w47"
+path="res://.godot/imported/cheese.png-a47d4f351030014a7596419fe1de62bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/nazrin/nazrin.png"
-dest_files=["res://.godot/imported/nazrin.png-aaca7f672210768c3b945454d558ae38.ctex"]
+source_file="res://assets/sprites/loot/cheese.png"
+dest_files=["res://.godot/imported/cheese.png-a47d4f351030014a7596419fe1de62bf.ctex"]
 
 [params]
 

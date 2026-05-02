@@ -13,10 +13,9 @@ height = 64.0
 [node name="Poison Vial" type="Node2D" unique_id=341954655]
 top_level = true
 script = ExtResource("1_jus0w")
-base_scale = Vector2(1, 1)
 
 [node name="SpriteVial" type="Sprite2D" parent="." unique_id=1094168658]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_clt4f")
 offset = Vector2(-5, -25)
 

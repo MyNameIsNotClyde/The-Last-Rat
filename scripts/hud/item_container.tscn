@@ -26,9 +26,9 @@ script = ExtResource("1_bqxvm")
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 65.0
-offset_bottom = 65.0
-scale = Vector2(0.22, 0.22)
+offset_right = 501.0
+offset_bottom = 501.0
+scale = Vector2(0.028, 0.028)
 
 [node name="LevelLabel" type="Label" parent="." unique_id=1057401390]
 layout_mode = 0

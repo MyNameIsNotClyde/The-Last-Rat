@@ -10,11 +10,9 @@ size = Vector2(6, 16)
 [node name="Arrow" type="Node2D" unique_id=1482762880]
 top_level = true
 script = ExtResource("1_g5xh4")
-base_scale = Vector2(0.5, 0.5)
-base_size = Vector2(6, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=974194262]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_d5akp")
 
 [node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("2_g5xh4")]

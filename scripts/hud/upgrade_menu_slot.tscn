@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://qcftk2ev40un"]
 
-[ext_resource type="Texture2D" uid="uid://dj8mks7a6hjuh" path="res://assets/sprites/Weapon Icon.png" id="1_st86q"]
 [ext_resource type="Script" uid="uid://gw85866gmntm" path="res://scripts/hud/upgrade_menu_slot.gd" id="1_wnc5l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyr4r"]
@@ -65,9 +64,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="UpgradeIcon" type="TextureRect" parent="UpgradeIconBackground" unique_id=1407364098]
 layout_mode = 0
-offset_right = 160.0
-offset_bottom = 160.0
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_st86q")
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.048, 0.048)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

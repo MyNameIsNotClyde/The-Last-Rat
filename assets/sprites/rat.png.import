@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmi1rif8oigj7"
-path="res://.godot/imported/gold.png-c9486b6d2b144dc0f2b6faa5d7a615d4.ctex"
+uid="uid://bkaldrpm7gnqv"
+path="res://.godot/imported/rat.png-e780537a5ce9decc0105c76d6bf9f880.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/gold.png"
-dest_files=["res://.godot/imported/gold.png-c9486b6d2b144dc0f2b6faa5d7a615d4.ctex"]
+source_file="res://assets/sprites/rat.png"
+dest_files=["res://.godot/imported/rat.png-e780537a5ce9decc0105c76d6bf9f880.ctex"]
 
 [params]
 

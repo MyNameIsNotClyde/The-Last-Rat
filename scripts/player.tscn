@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwbjrfvu80m0t"]
 
 [ext_resource type="Script" uid="uid://bddmfg1lk353g" path="res://scripts/player.gd" id="1_b26j0"]
-[ext_resource type="Texture2D" uid="uid://bwjhi3wn5mkse" path="res://assets/sprites/nazrin/nazrin.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bkaldrpm7gnqv" path="res://assets/sprites/rat.png" id="2_xfidv"]
 [ext_resource type="Texture2D" uid="uid://c761dsivtbb4j" path="res://assets/sprites/explosion.png" id="3_38am0"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_fhbv5"]
 [ext_resource type="Script" uid="uid://dnlqm37m2alnn" path="res://scripts/util/enemy_detector.gd" id="4_0jhex"]
@@ -32,7 +32,8 @@ script = ExtResource("1_b26j0")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1868126011]
-texture = ExtResource("2_onrkg")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_xfidv")
 hframes = 4
 
 [node name="WalkTimer" type="Timer" parent="Sprite2D" unique_id=950250331]
@@ -62,9 +63,9 @@ shape = SubResource("CapsuleShape2D_op7ga")
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=753810942]
 z_index = 1
 offset_left = -12.0
-offset_top = -18.0
+offset_top = -24.0
 offset_right = 12.0
-offset_bottom = -15.0
+offset_bottom = -21.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxLine_onrkg")
 theme_override_styles/fill = SubResource("StyleBoxLine_i3pqv")

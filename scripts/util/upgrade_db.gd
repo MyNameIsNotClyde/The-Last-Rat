@@ -10,13 +10,13 @@ const WEAPON_LIST = {
 
 const ITEM_LIST = [
 	{
-		"name": "Medical Cheese",
-		"icon": preload("res://assets/sprites/upgrades/cheese.png"),
+		"name": "Medical Treatment",
+		"icon": preload("res://assets/sprites/upgrades/heart.png"),
 		"type": "item",
 		"description": "Heals for 20 health.",
 		"weight": 60
 	}, {
-		"name": "Magnifying Glass",
+		"name": "Magnifying Spyglass",
 		"icon": preload("res://assets/sprites/upgrades/spyglass.png"),
 		"type": "item",
 		"description": "Increases projectile size by 10% per stack.",
