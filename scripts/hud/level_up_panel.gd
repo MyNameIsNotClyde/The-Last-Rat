@@ -35,7 +35,6 @@ func get_random_upgrades(amount: int) -> Array:
 	var item_weights = []
 	for item in UpgradeDB.ITEM_LIST:
 		item_weights.append(item["weight"])
-	## FIX: Items displayed can be duplicate. 
 	for i in range(amount-len(upgrades)):
 		var index_chosen = rng.rand_weighted(item_weights)
 		var upgrade_chosen = UpgradeDB.ITEM_LIST[index_chosen].duplicate()
