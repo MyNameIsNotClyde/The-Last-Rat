@@ -22,18 +22,18 @@ texture = ExtResource("2_ykiyo")
 [node name="PlayButton" type="Button" parent="." unique_id=14595598]
 layout_mode = 0
 offset_left = 500.0
-offset_top = 180.0
-offset_right = 580.0
-offset_bottom = 220.0
+offset_top = 182.5
+offset_right = 572.0
+offset_bottom = 218.5
 focus_neighbor_right = NodePath("../QuitButton")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="." unique_id=622317787]
 layout_mode = 0
 offset_left = 500.0
-offset_top = 230.0
-offset_right = 580.0
-offset_bottom = 270.0
+offset_top = 225.0
+offset_right = 572.0
+offset_bottom = 261.0
 focus_neighbor_left = NodePath("../PlayButton")
 text = "Quit"
 

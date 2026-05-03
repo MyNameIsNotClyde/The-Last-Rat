@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://6wcfj5pnf2op" path="res://scripts/hud/hud.gd" id="1_7u7h5"]
 [ext_resource type="PackedScene" uid="uid://p7r0aaolr0ch" path="res://scripts/hud/level_up_panel.tscn" id="1_jf1ws"]
 [ext_resource type="Texture2D" uid="uid://bf5h78tn06678" path="res://assets/sprites/loot/coin.png" id="2_hkl3l"]
-[ext_resource type="Script" uid="uid://dghujtfhy4nmv" path="res://scripts/hud/intro_panel.gd" id="4_rpoeg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7ny"]
 draw_center = false
@@ -189,54 +188,8 @@ text = "Back to Menu"
 wait_time = 0.5
 one_shot = true
 
-[node name="IntroPanel" type="Panel" parent="." unique_id=199552862]
-process_mode = 2
-offset_left = 220.0
-offset_top = 90.0
-offset_right = 420.0
-offset_bottom = 270.0
-script = ExtResource("4_rpoeg")
-
-[node name="DescriptionLabel" type="Label" parent="IntroPanel" unique_id=1763303338]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -84.0
-offset_top = 32.0
-offset_right = 84.0
-offset_bottom = 89.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 12
-text = "The cat apawcalypse is here. 
-You are the last rat. 
-Survive for 5 minutes to win."
-horizontal_alignment = 1
-
-[node name="ResumeButton" type="Button" parent="IntroPanel" unique_id=1601810416]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -70.0
-offset_right = 40.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Start"
-
-[node name="FocusTimer" type="Timer" parent="IntroPanel" unique_id=1258839440]
-wait_time = 0.2
-one_shot = true
-autostart = true
-
 [connection signal="upgrade_selected" from="LevelUpPanel" to="." method="add_to_collection"]
 [connection signal="pressed" from="ResultPanel/ToMenuButton" to="." method="_on_to_menu_button_pressed"]
 [connection signal="pressed" from="PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PausePanel/ToMenuButton" to="." method="_on_to_menu_button_pressed"]
 [connection signal="timeout" from="PausePanel/TweenTimer" to="." method="_on_tween_timer_timeout"]
-[connection signal="pressed" from="IntroPanel/ResumeButton" to="IntroPanel" method="_on_resume_button_pressed"]
-[connection signal="timeout" from="IntroPanel/FocusTimer" to="IntroPanel" method="_on_focus_timer_timeout"]
