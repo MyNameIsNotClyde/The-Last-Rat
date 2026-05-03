@@ -63,6 +63,7 @@ func display_level_up_screen() -> void:
 		new_upgrade_slot.object = upgrades[slot_index]
 		new_upgrade_slot.connect("upgrade_selected", Callable(self, "upgrade_selected_handler"))
 		$UpgradeMenu.add_child(new_upgrade_slot)
+		if slot_index == 0: new_upgrade_slot.grab_focus()
 	queue -= 1
 	get_tree().paused = true
 

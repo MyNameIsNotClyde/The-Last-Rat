@@ -46,6 +46,7 @@ func move_result_panel(player_obj):
 	$ResultPanel/GoldLabel.text = "Gold: " + str(player_obj.gold)
 	result_panel.position = Vector2(220, -400)
 	result_panel.visible = true
+	$ResultPanel/ToMenuButton.grab_focus()
 	
 	var tween = result_panel.create_tween()
 	tween.tween_property(result_panel, "position", Vector2(220, 50), 3.0)\
@@ -55,3 +56,27 @@ func move_result_panel(player_obj):
 func _on_to_menu_button_pressed() -> void:
 	get_tree().paused = false
 	var _level = get_tree().change_scene_to_file("res://scripts/menu.tscn")
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().paused = true
+		move_pause_panel()
+
+func move_pause_panel():
+	var pausePanel = $PausePanel
+	pausePanel.position = Vector2(220, -400)
+	pausePanel.visible = true
+	var tween = pausePanel.create_tween()
+	tween.tween_property(pausePanel, "position", Vector2(220, 50), 0.5)\
+		.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	$PausePanel/TweenTimer.start()
+
+func _on_resume_button_pressed() -> void:
+	var pausePanel = $PausePanel
+	pausePanel.position = Vector2(220, -400)
+	pausePanel.visible = false
+	get_tree().paused = false
+
+func _on_tween_timer_timeout() -> void:
+	$PausePanel/ResumeButton.grab_focus()

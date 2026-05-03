@@ -7,13 +7,13 @@ func _ready() -> void:
 	weapon_name = "Poison Vials"
 	weapon_icon = preload("res://assets/sprites/upgrades/poison_vial.png")
 	target_mode = TARGET_MODE.RANDOM
-	target_range = 100
+	target_range = 150
 	projectile = preload("res://scripts/weapons/poison_vial.tscn")
 	base_stats = {
 		"max_ammo": 1,
 		"shoot_time": 0.4,
 		"reload_time": 2.0,
-		"proj_damage": 3.0,
+		"proj_damage": 2.0,
 		"proj_damage_interval": 0.5,
 		"proj_duration": 3.0,
 		"proj_speed": 100.0,
@@ -31,23 +31,25 @@ const UPGRADE_TABLE = [
 	},
 	{
 		"level": 2,
-		"description": "Increase the range of the throw by 50%.",
+		"description": "The pool of poison lasts 50% longer. The vial travels 60% faster.",
 		"effects": {
-			"target_range" = 150
+			"proj_duration": 4.5,
+			"proj_speed": 160.0
 		}
 	},
 	{
 		"level": 3,
-		"description": "The pool of poison lasts 50% longer.",
+		"description": "Better poison formula increases both damage and damage rate by 25%.",
 		"effects": {
-			"proj_duration": 4.5
+			"proj_damage": 2.5,
+			"proj_damage_interval": 0.4
 		}
 	},
 	{
 		"level": 4,
-		"description": "An added accelerant increases the poison damage rate by 33%.",
+		"description": "An added accelerant doubles the poison damage rate.",
 		"effects": {
-			"proj_damage_interval": 0.4,
+			"proj_damage_interval": 0.2,
 		}
 	}
 ]

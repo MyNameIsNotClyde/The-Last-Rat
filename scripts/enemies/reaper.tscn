@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://qjsdrsyexuqn"]
+[gd_scene format=3 uid="uid://866ib23lcqpy"]
 
-[ext_resource type="Script" uid="uid://ccwdw7wqatvi" path="res://scripts/enemies/enemy.gd" id="1_qsa8t"]
-[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_puclx"]
-[ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_sbwg2"]
-[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_j5wh0"]
+[ext_resource type="Script" uid="uid://cdc6821hr77xi" path="res://scripts/enemies/reaper.gd" id="1_sqyp4"]
+[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_8grwa"]
+[ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_pcpp1"]
+[ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_t2sen"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_066se"]
 radius = 3.0
@@ -15,20 +15,19 @@ size = Vector2(14, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyp1q"]
 size = Vector2(10, 20)
 
-[node name="Grunt" type="CharacterBody2D" unique_id=871270266]
+[node name="Reaper" type="CharacterBody2D" unique_id=871270266]
 collision_layer = 5
 motion_mode = 1
-script = ExtResource("1_qsa8t")
-speed = 20.0
-health = 10.0
-kb_recovery = 4.0
-damage = 2.0
-loot_exp = 1
-loot_gold = 1
+script = ExtResource("1_sqyp4")
+speed = 50.0
+health = 1.0
+kb_recovery = 1.0
+damage = 100.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456035173]
-texture = ExtResource("2_puclx")
+modulate = Color(1, 0.5, 0.99166656, 1)
+texture = ExtResource("2_8grwa")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489190177]
@@ -39,7 +38,7 @@ shape = SubResource("CapsuleShape2D_066se")
 wait_time = 0.2
 one_shot = true
 
-[node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_sbwg2")]
+[node name="Hurtbox" parent="." unique_id=1911067321 instance=ExtResource("3_pcpp1")]
 visible = false
 collision_layer = 4
 collision_mask = 2
@@ -47,15 +46,13 @@ collision_mask = 2
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1489616137]
 shape = SubResource("RectangleShape2D_0an0k")
 
-[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_j5wh0")]
+[node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_t2sen")]
 visible = false
 collision_mask = 2
 hitbox_type = 1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
 shape = SubResource("RectangleShape2D_nyp1q")
-
-[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

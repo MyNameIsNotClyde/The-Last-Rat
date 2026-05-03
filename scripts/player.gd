@@ -71,8 +71,8 @@ func _on_loot_collector_exp_gain(amount: int) -> void:
 	while experience >= experience_needed_to_level_up:
 		# Level up
 		level += 1
-		max_health += 5
-		health += 5
+		max_health += 2
+		health += 2
 		set_health_bar()
 		hud.level_up_panel.queue += 1
 		hud.experience_bar_label.text = str("Level ",level)
@@ -86,9 +86,10 @@ func _on_loot_collector_gold_gain(amount: int) -> void:
 	hud.set_gold_label_text(gold)
 
 func get_xp_lvl_up_req() -> int:
-	if level < 20: return level*5
-	if level < 40: return 95 + (level-19)*8
-	return 255 + (level-39)*12
+	if level <= 10: return level*5
+	if level <= 20: return 50 + (level-10)*10
+	if level <= 30: return 150 + (level-20)*15
+	return 300 + (level-30)*20
 
 func start_death_animation() -> void:
 	$HealthBar.visible = false

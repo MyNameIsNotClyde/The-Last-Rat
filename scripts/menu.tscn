@@ -24,27 +24,50 @@ color = Color(0.4, 0.4, 0.4, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 120.0
+offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "The Last Rat"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DescriptionLabel" type="Label" parent="." unique_id=1608005822]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 100.0
+offset_right = 560.0
+offset_bottom = 175.0
+text = "The cat apawcalypse is here. 
+You are the last rat. 
+Survive for 5 minutes to win."
+horizontal_alignment = 1
+
+[node name="ControlsLabel" type="Label" parent="." unique_id=1925588087]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 560.0
+offset_bottom = 249.0
+text = "Arrow keys or WASD to move.
+Space or Enter to select."
+horizontal_alignment = 1
+
 [node name="PlayButton" type="Button" parent="." unique_id=14595598]
 layout_mode = 0
-offset_left = 280.0
-offset_top = 200.0
-offset_right = 360.0
-offset_bottom = 240.0
+offset_left = 200.0
+offset_top = 280.0
+offset_right = 280.0
+offset_bottom = 320.0
+focus_neighbor_right = NodePath("../QuitButton")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="." unique_id=622317787]
 layout_mode = 0
-offset_left = 280.0
-offset_top = 260.0
-offset_right = 360.0
-offset_bottom = 300.0
+offset_left = 360.0
+offset_top = 280.0
+offset_right = 440.0
+offset_bottom = 320.0
+focus_neighbor_left = NodePath("../PlayButton")
 text = "Quit"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

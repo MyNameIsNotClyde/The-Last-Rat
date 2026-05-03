@@ -11,14 +11,16 @@ func _ready() -> void:
 	$Hitbox.cooldown_length = damage_interval
 	$SpriteVial.rotation = PI/4 if global_position.x >= target_position.x else -PI/4
 	var target_rotation = -9*PI/4 if global_position.x >= target_position.x else 9*PI/4
-	var gravity = 500.0
-	var initial_velocity_y = target_position.y - global_position.y - gravity/2
+	var travel_time = 80.0 / speed
+	var gravity = 500.0/travel_time/travel_time
+	var initial_velocity_y = (target_position.y - global_position.y - gravity*travel_time*travel_time/2)/travel_time
 	var lerp_position_y = func(t, init_vel_y, init_pos_y):
 		global_position.y = init_pos_y + init_vel_y*t + gravity*t*t/2
 	var tween = create_tween()
-	tween.tween_property(self, "global_position:x", target_position.x, 1.0)
-	tween.parallel().tween_method(lerp_position_y.bind(global_position.y).bind(initial_velocity_y), 0.0, 1.0, 1.0)
-	tween.parallel().tween_property($SpriteVial, "rotation", target_rotation, 1.0)
+	tween.tween_property(self, "global_position:x", target_position.x, travel_time)
+	tween.parallel().tween_method(lerp_position_y.bind(global_position.y).bind(initial_velocity_y), 0.0, travel_time, travel_time)
+	tween.parallel().tween_property($SpriteVial, "rotation", target_rotation, travel_time)
+	$TimerTravel.start(travel_time)
 
 func _physics_process(_delta: float) -> void:
 	pass

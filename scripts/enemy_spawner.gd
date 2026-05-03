@@ -3,7 +3,7 @@ extends Node2D
 @export var spawns: Array[SpawnInfo] = []
 @onready var player = get_tree().get_first_node_in_group("player")
 
-var time = 0
+var time: float = 0.0
 
 func _process(delta: float) -> void:
 	time += delta

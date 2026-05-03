@@ -13,7 +13,7 @@ const ITEM_LIST = [
 		"name": "Medical Treatment",
 		"icon": preload("res://assets/sprites/upgrades/heart.png"),
 		"type": "item",
-		"description": "Heals for 20 health.",
+		"description": "Heals for 30% of your max health.",
 		"weight": 60
 	}, {
 		"name": "Magnifying Spyglass",
@@ -31,7 +31,7 @@ const ITEM_LIST = [
 		"name": "Dusty Boots",
 		"icon": preload("res://assets/sprites/upgrades/boots.png"),
 		"type": "item",
-		"description": "Increases movement speed by 25% per stack.",
+		"description": "Increases movement speed by 20% per stack.",
 		"weight": 60
 	}, {
 		"name": "Ergonomic Grip",
@@ -40,7 +40,7 @@ const ITEM_LIST = [
 		"description": "Decreases cooldown by 5% per stack.",
 		"weight": 40
 	}, {
-		"name": "Silver alloy",
+		"name": "Silver Alloy",
 		"icon": preload("res://assets/sprites/upgrades/silver.png"),
 		"type": "item",
 		"description": "Increases damage by 10% per stack.",
@@ -62,14 +62,14 @@ const ITEM_LIST = [
 
 func apply_item_effects(player: CharacterBody2D, obj):
 	match obj["name"]:
-		"Medical Cheese":
-			player.health = min(player.health + 20, player.max_health)
-		"Magnifying Glass":
+		"Medical Treatment":
+			player.health = min(player.health + player.max_health*0.3, player.max_health)
+		"Magnifying Spyglass":
 			player.area += 0.1
 		"Iron Plating":
 			player.armour += 1
 		"Dusty Boots":
-			player.speed += 20.0
+			player.speed += 16.0
 		"Ergonomic Grip":
 			player.cooldown -= 0.05
 		"Silver Alloy":

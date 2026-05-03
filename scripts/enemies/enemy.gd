@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
-@export var speed: int
+@export var speed: float
 @export var health: float
 @export var kb_recovery: float
 @export var damage: float
@@ -34,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	velocity += kb_force
 	move_and_slide()
 
-func _on_hurtbox_hurt(take_damage: int, kb_power: int, kb_angle: Vector2) -> void:
+func _on_hurtbox_hurt(take_damage: float, kb_power: int, kb_angle: Vector2) -> void:
 	health -= take_damage
 	kb_force = kb_angle * kb_power
 	if health <= 0: death()
