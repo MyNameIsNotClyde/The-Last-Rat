@@ -19,18 +19,6 @@ offset_bottom = 1080.0
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("2_ykiyo")
 
-[node name="DescriptionLabel" type="Label" parent="." unique_id=1608005822]
-visible = false
-layout_mode = 0
-offset_left = 80.0
-offset_top = 100.0
-offset_right = 560.0
-offset_bottom = 175.0
-text = "The cat apawcalypse is here. 
-You are the last rat. 
-Survive for 5 minutes to win."
-horizontal_alignment = 1
-
 [node name="PlayButton" type="Button" parent="." unique_id=14595598]
 layout_mode = 0
 offset_left = 500.0

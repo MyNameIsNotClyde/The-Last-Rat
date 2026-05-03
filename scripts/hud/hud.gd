@@ -59,8 +59,10 @@ func _on_to_menu_button_pressed() -> void:
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		get_tree().paused = true
-		move_pause_panel()
+		var tree = get_tree()
+		if not tree.paused:
+			tree.paused = true
+			move_pause_panel()
 
 func move_pause_panel():
 	var pausePanel = $PausePanel
