@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://cts6ef1pdmxve"]
 
 [ext_resource type="Script" uid="uid://ccwdw7wqatvi" path="res://scripts/enemies/enemy.gd" id="1_mu75m"]
-[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_umjee"]
+[ext_resource type="Texture2D" uid="uid://x2j7k6w37fjw" path="res://assets/sprites/enemies/vampire-cat.png" id="2_mu75m"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_g88nw"]
 [ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_asvse"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_066se"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_umjee"]
 radius = 3.0
 height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0an0k"]
-size = Vector2(14, 24)
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyp1q"]
 size = Vector2(10, 20)
@@ -28,13 +28,13 @@ loot_gold = 1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456035173]
-modulate = Color(0.8, 1, 0.5, 1)
-texture = ExtResource("2_umjee")
-hframes = 4
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_mu75m")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489190177]
 visible = false
-shape = SubResource("CapsuleShape2D_066se")
+shape = SubResource("CapsuleShape2D_umjee")
 
 [node name="WalkTimer" type="Timer" parent="." unique_id=2125125114]
 wait_time = 0.2

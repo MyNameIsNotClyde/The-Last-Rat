@@ -2,7 +2,7 @@ extends Control
 
 var level = "res://scripts/world.tscn"
 
-func _ready() -> void:
+func _on_focus_timer_timeout() -> void:
 	$PlayButton.grab_focus()
 
 func _on_play_button_pressed() -> void:

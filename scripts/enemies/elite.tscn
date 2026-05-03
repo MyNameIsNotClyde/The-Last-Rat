@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpc8vhfc62mxg"]
 
 [ext_resource type="Script" uid="uid://ccwdw7wqatvi" path="res://scripts/enemies/enemy.gd" id="1_0srqg"]
-[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_bp2bc"]
+[ext_resource type="Texture2D" uid="uid://di7ss2lw7otk0" path="res://assets/sprites/enemies/frankenstein-cat.png" id="2_0srqg"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_4517p"]
 [ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_kdkdu"]
 
@@ -10,7 +10,7 @@ radius = 3.0
 height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0an0k"]
-size = Vector2(14, 24)
+size = Vector2(16, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyp1q"]
 size = Vector2(10, 20)
@@ -28,9 +28,9 @@ loot_gold = 1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456035173]
-modulate = Color(0.5, 0.6333332, 1, 1)
-texture = ExtResource("2_bp2bc")
-hframes = 4
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_0srqg")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489190177]
 visible = false

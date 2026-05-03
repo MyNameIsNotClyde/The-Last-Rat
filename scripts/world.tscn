@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://llulbrm2qs6y" path="res://scripts/hud/hud.tscn" id="6_ule47"]
 [ext_resource type="PackedScene" uid="uid://bpc8vhfc62mxg" path="res://scripts/enemies/elite.tscn" id="7_x2vx6"]
 [ext_resource type="PackedScene" uid="uid://866ib23lcqpy" path="res://scripts/enemies/reaper.tscn" id="8_bgnw1"]
-[ext_resource type="AudioStream" uid="uid://bjgiu18inc1p3" path="res://assets/bgm.mp3" id="10_o88w5"]
+[ext_resource type="AudioStream" uid="uid://bosy3g5cihtqf" path="res://assets/last rat.mp3" id="10_o88w5"]
 [ext_resource type="Script" uid="uid://cfyqyxikaxvh3" path="res://scripts/background_music.gd" id="11_pledc"]
 
 [sub_resource type="Resource" id="Resource_x2vx6"]
@@ -78,8 +78,8 @@ metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 script = ExtResource("3_58uta")
 time_start = 180.0
 time_end = 181.0
-enemy = ExtResource("6_22ew4")
-spawn_amount = 250
+enemy = ExtResource("2_ras4o")
+spawn_amount = 200
 spawn_interval = 2.0
 metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
@@ -87,15 +87,15 @@ metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 script = ExtResource("3_58uta")
 time_start = 180.0
 time_end = 240.0
-enemy = ExtResource("2_ras4o")
+enemy = ExtResource("6_22ew4")
 spawn_amount = 1
 spawn_interval = 0.4
 metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [sub_resource type="Resource" id="Resource_ck6fg"]
 script = ExtResource("3_58uta")
-time_start = 210.0
-time_end = 255.0
+time_start = 200.0
+time_end = 240.0
 enemy = ExtResource("7_x2vx6")
 spawn_amount = 3
 spawn_interval = 1.0
@@ -103,20 +103,38 @@ metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [sub_resource type="Resource" id="Resource_whh4i"]
 script = ExtResource("3_58uta")
-time_start = 210.0
-time_end = 270.0
+time_start = 240.0
+time_end = 241.0
 enemy = ExtResource("6_22ew4")
-spawn_amount = 1
-spawn_interval = 0.3
+spawn_amount = 200
+spawn_interval = 2.0
+metadata/_custom_type_script = "uid://cgoluqakvr7x2"
+
+[sub_resource type="Resource" id="Resource_0t0q4"]
+script = ExtResource("3_58uta")
+time_start = 250.0
+time_end = 300.0
+enemy = ExtResource("6_22ew4")
+spawn_amount = 2
+spawn_interval = 0.5
+metadata/_custom_type_script = "uid://cgoluqakvr7x2"
+
+[sub_resource type="Resource" id="Resource_8bvd1"]
+script = ExtResource("3_58uta")
+time_start = 250.0
+time_end = 270.0
+enemy = ExtResource("7_x2vx6")
+spawn_amount = 3
+spawn_interval = 2.0
 metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [sub_resource type="Resource" id="Resource_2gqin"]
 script = ExtResource("3_58uta")
-time_start = 255.0
+time_start = 270.0
 time_end = 300.0
 enemy = ExtResource("7_x2vx6")
-spawn_amount = 15
-spawn_interval = 2.0
+spawn_amount = 3
+spawn_interval = 0.5
 metadata/_custom_type_script = "uid://cgoluqakvr7x2"
 
 [sub_resource type="Resource" id="Resource_c278u"]
@@ -142,7 +160,7 @@ stretch_mode = 1
 [node name="Player" parent="." unique_id=1141310792 instance=ExtResource("1_u0x2w")]
 
 [node name="EnemySpawner" parent="." unique_id=309922029 instance=ExtResource("2_u0x2w")]
-spawns = Array[ExtResource("3_58uta")]([SubResource("Resource_x2vx6"), SubResource("Resource_bgnw1"), SubResource("Resource_vkkpg"), SubResource("Resource_71i6y"), SubResource("Resource_3f6h1"), SubResource("Resource_lhsfa"), SubResource("Resource_o88w5"), SubResource("Resource_pledc"), SubResource("Resource_j3lq4"), SubResource("Resource_ck6fg"), SubResource("Resource_whh4i"), SubResource("Resource_2gqin"), SubResource("Resource_c278u")])
+spawns = Array[ExtResource("3_58uta")]([SubResource("Resource_x2vx6"), SubResource("Resource_bgnw1"), SubResource("Resource_vkkpg"), SubResource("Resource_71i6y"), SubResource("Resource_3f6h1"), SubResource("Resource_lhsfa"), SubResource("Resource_o88w5"), SubResource("Resource_pledc"), SubResource("Resource_j3lq4"), SubResource("Resource_ck6fg"), SubResource("Resource_whh4i"), SubResource("Resource_0t0q4"), SubResource("Resource_8bvd1"), SubResource("Resource_2gqin"), SubResource("Resource_c278u")])
 
 [node name="LootPool" type="Node2D" parent="." unique_id=1534728463 groups=["loot"]]
 z_index = -1

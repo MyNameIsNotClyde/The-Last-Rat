@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dm30r3flu7e8e"]
 
 [ext_resource type="Script" uid="uid://dc7f78cj4yg0v" path="res://scripts/menu.gd" id="1_ik1yk"]
+[ext_resource type="Texture2D" uid="uid://45ocrvtcl33e" path="res://assets/sprites/title.png" id="2_ykiyo"]
 
 [node name="Menu" type="Control" unique_id=2062527975]
 layout_mode = 3
@@ -11,27 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ik1yk")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1443757880]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.4, 0.4, 0.4, 1)
-
-[node name="TitleLabel" type="Label" parent="." unique_id=1941319856]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "The Last Rat"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="." unique_id=268857453]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("2_ykiyo")
 
 [node name="DescriptionLabel" type="Label" parent="." unique_id=1608005822]
+visible = false
 layout_mode = 0
 offset_left = 80.0
 offset_top = 100.0
@@ -42,33 +31,29 @@ You are the last rat.
 Survive for 5 minutes to win."
 horizontal_alignment = 1
 
-[node name="ControlsLabel" type="Label" parent="." unique_id=1925588087]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 200.0
-offset_right = 560.0
-offset_bottom = 249.0
-text = "Arrow keys or WASD to move.
-Space or Enter to select."
-horizontal_alignment = 1
-
 [node name="PlayButton" type="Button" parent="." unique_id=14595598]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 280.0
-offset_right = 280.0
-offset_bottom = 320.0
+offset_left = 500.0
+offset_top = 180.0
+offset_right = 580.0
+offset_bottom = 220.0
 focus_neighbor_right = NodePath("../QuitButton")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="." unique_id=622317787]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 280.0
-offset_right = 440.0
-offset_bottom = 320.0
+offset_left = 500.0
+offset_top = 230.0
+offset_right = 580.0
+offset_bottom = 270.0
 focus_neighbor_left = NodePath("../PlayButton")
 text = "Quit"
 
+[node name="FocusTimer" type="Timer" parent="." unique_id=464769569]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="FocusTimer" to="." method="_on_focus_timer_timeout"]
