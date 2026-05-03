@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv13ascbwetcd"
-path="res://.godot/imported/kunai.png-2938abbb6d63dfa107a2b59a18830f62.ctex"
+uid="uid://cgd1b4x57v01m"
+path="res://.godot/imported/zombie-cat.png-d649bd83f8af549b211d7d78e4d2ccc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/weapon/kunai.png"
-dest_files=["res://.godot/imported/kunai.png-2938abbb6d63dfa107a2b59a18830f62.ctex"]
+source_file="res://assets/sprites/enemies/zombie-cat.png"
+dest_files=["res://.godot/imported/zombie-cat.png-d649bd83f8af549b211d7d78e4d2ccc2.ctex"]
 
 [params]
 

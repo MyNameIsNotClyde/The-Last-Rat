@@ -20,7 +20,7 @@ texture = ExtResource("2_clt4f")
 offset = Vector2(-5, -25)
 
 [node name="SpritePool" type="Sprite2D" parent="." unique_id=123873484]
-z_index = -1
+z_index = -2
 texture = ExtResource("3_4vna0")
 
 [node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_4vna0")]

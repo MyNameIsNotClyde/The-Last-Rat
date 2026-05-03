@@ -6,9 +6,10 @@ var speed = -2
 var accel = 4
 
 func _ready() -> void:
-	if experience_amount < 5: scale = Vector2(1,1);
-	elif experience_amount < 25: scale = Vector2(1.5,1.5);
-	else: scale = Vector2(2,2);
+	if experience_amount < 5: scale = Vector2(1,1)
+	else:
+		$Sprite2D.frame = 1
+		scale = Vector2(1.25,1.25)
 
 func _physics_process(delta: float) -> void:
 	if target == null: return

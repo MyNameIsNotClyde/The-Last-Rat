@@ -2,13 +2,13 @@ extends Area2D
 
 var enemies_detected: Array[Node2D] = []
 
-func _on_body_entered(body: Node2D) -> void:
-	if not enemies_detected.has(body):
-		enemies_detected.append(body)
+func _on_area_entered(area: Node2D) -> void:
+	if not enemies_detected.has(area):
+		enemies_detected.append(area)
 
-func _on_body_exited(body: Node2D) -> void:
-	if enemies_detected.has(body):
-		enemies_detected.erase(body)
+func _on_area_exited(area: Node2D) -> void:
+	if enemies_detected.has(area):
+		enemies_detected.erase(area)
 
 func get_random_enemy(target_range: int) -> Node2D:
 	var enemies_in_range = enemies_detected.filter(

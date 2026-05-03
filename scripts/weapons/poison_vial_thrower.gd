@@ -47,9 +47,9 @@ const UPGRADE_TABLE = [
 	},
 	{
 		"level": 4,
-		"description": "An added accelerant doubles the poison damage rate.",
+		"description": "An added accelerant increases the poison damage rate by 33%.",
 		"effects": {
-			"proj_damage_interval": 0.2,
+			"proj_damage_interval": 0.3
 		}
 	}
 ]
@@ -58,6 +58,7 @@ func shoot(target: Node2D):
 	if target == null: return # Check if there is a target
 	if level <= 0: return # Check if player has weapon
 	if ammo <= 0: return # Check if weapon has ammo
+	if not $ShootTimer.is_stopped(): return # Check weapon shoot cooldown
 	var vial: Projectile = projectile.instantiate()
 	vial.set_props(
 		global_position,

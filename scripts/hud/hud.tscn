@@ -138,6 +138,7 @@ text = "Back to Menu"
 
 [node name="PausePanel" type="Panel" parent="." unique_id=1220169177]
 process_mode = 2
+visible = false
 offset_left = 220.0
 offset_top = -400.0
 offset_right = 420.0

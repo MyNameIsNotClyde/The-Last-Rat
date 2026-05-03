@@ -39,7 +39,7 @@ func add_to_collection(upgrade_obj):
 
 func move_result_panel(player_obj):
 	var result_panel = $ResultPanel
-	$ResultPanel/TitleLabel.text = "Game Over" if time < 300 else "You Win"
+	$ResultPanel/TitleLabel.text = "Game Over" if time < 300 else "You Win :D"
 	@warning_ignore("integer_division")
 	$ResultPanel/TimeLabel.text = "Time: " + str(int(time) / 60).lpad(2,'0') + ':' + str(int(time) % 60).lpad(2,'0')
 	$ResultPanel/LevelLabel.text = "Level: " + str(player_obj.level)

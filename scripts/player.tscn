@@ -100,8 +100,8 @@ script = ExtResource("6_38am0")
 
 [connection signal="timeout" from="ExplosionSprite2D/FrameTimer" to="." method="continue_death_animation"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
-[connection signal="body_entered" from="EnemyDetector" to="EnemyDetector" method="_on_body_entered"]
-[connection signal="body_exited" from="EnemyDetector" to="EnemyDetector" method="_on_body_exited"]
+[connection signal="area_entered" from="EnemyDetector" to="EnemyDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="EnemyDetector" to="EnemyDetector" method="_on_area_exited"]
 [connection signal="exp_gain" from="LootCollector" to="." method="_on_loot_collector_exp_gain"]
 [connection signal="gold_gain" from="LootCollector" to="." method="_on_loot_collector_gold_gain"]
 

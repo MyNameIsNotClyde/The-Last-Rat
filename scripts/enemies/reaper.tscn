@@ -1,19 +1,16 @@
 [gd_scene format=3 uid="uid://866ib23lcqpy"]
 
 [ext_resource type="Script" uid="uid://cdc6821hr77xi" path="res://scripts/enemies/reaper.gd" id="1_sqyp4"]
-[ext_resource type="Texture2D" uid="uid://dseuvdwnym7wx" path="res://assets/sprites/chen/chen.png" id="2_8grwa"]
+[ext_resource type="Texture2D" uid="uid://dqjuxp72j8xyt" path="res://assets/sprites/enemies/reaper.png" id="2_sqyp4"]
 [ext_resource type="PackedScene" uid="uid://d0i2rdx6qr1n" path="res://scripts/util/hurtbox.tscn" id="3_pcpp1"]
 [ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="4_t2sen"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_066se"]
-radius = 3.0
-height = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8grwa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0an0k"]
-size = Vector2(14, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqyp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyp1q"]
-size = Vector2(10, 20)
+size = Vector2(24, 32)
 
 [node name="Reaper" type="CharacterBody2D" unique_id=871270266]
 collision_layer = 5
@@ -26,13 +23,15 @@ damage = 100.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456035173]
-modulate = Color(1, 0.5, 0.99166656, 1)
-texture = ExtResource("2_8grwa")
-hframes = 4
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_sqyp4")
+hframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489190177]
 visible = false
-shape = SubResource("CapsuleShape2D_066se")
+shape = SubResource("CircleShape2D_8grwa")
+disabled = true
 
 [node name="WalkTimer" type="Timer" parent="." unique_id=2125125114]
 wait_time = 0.2
@@ -42,9 +41,10 @@ one_shot = true
 visible = false
 collision_layer = 4
 collision_mask = 2
+toughness = 0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1489616137]
-shape = SubResource("RectangleShape2D_0an0k")
+shape = SubResource("CircleShape2D_sqyp4")
 
 [node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("4_t2sen")]
 visible = false

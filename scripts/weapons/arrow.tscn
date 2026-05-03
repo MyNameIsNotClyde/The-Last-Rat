@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://btghad1g6b54t" path="res://scripts/util/hitbox.tscn" id="2_g5xh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h3o8"]
-size = Vector2(6, 16)
+size = Vector2(6, 20)
 
 [node name="Arrow" type="Node2D" unique_id=1482762880]
 top_level = true
 script = ExtResource("1_g5xh4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=974194262]
-scale = Vector2(0.03, 0.03)
+scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_d5akp")
 
 [node name="Hitbox" parent="." unique_id=1395816737 instance=ExtResource("2_g5xh4")]

@@ -15,6 +15,7 @@ script = ExtResource("1_bfder")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=868190785]
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_ltfov")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1632045438]
 shape = SubResource("RectangleShape2D_ltfov")
