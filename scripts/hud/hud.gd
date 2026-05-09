@@ -54,7 +54,6 @@ func move_result_panel(player_obj):
 	tween.play()
 
 func _on_to_menu_button_pressed() -> void:
-	get_tree().paused = false
 	var _level = get_tree().change_scene_to_file("res://scripts/menu.tscn")
 
 func _input(event):

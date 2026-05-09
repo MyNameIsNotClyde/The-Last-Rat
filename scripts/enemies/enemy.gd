@@ -8,6 +8,7 @@ class_name Enemy extends CharacterBody2D
 @export var loot_gold: int
 var kb_force = Vector2.ZERO
 var is_dead = false
+var free_if_off_screen = false
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var loot_pool = get_tree().get_first_node_in_group("loot")
@@ -16,6 +17,11 @@ var loot_gold_obj = preload("res://scripts/objects/gold_loot.tscn")
 
 func _ready() -> void:
 	$Hitbox.damage = damage
+
+func _process(_delta: float) -> void:
+	if not free_if_off_screen: return
+	if $VisibleOnScreenNotifier2D.is_on_screen(): return
+	queue_free()
 
 func _physics_process(_delta: float) -> void:
 	kb_force = kb_force.move_toward(Vector2.ZERO, kb_recovery)
@@ -40,7 +46,7 @@ func _on_hurtbox_hurt(take_damage: float, kb_power: int, kb_angle: Vector2) -> v
 	if health <= 0: death()
 
 func death():
-	# The is_dead check is necessary since multiple hurtbox hurt can occur in a fram
+	# The is_dead check is necessary since multiple hurtbox hurt can occur in a frame
 	if is_dead: return
 	is_dead = true
 	var new_loot_exp = loot_exp_obj.instantiate()

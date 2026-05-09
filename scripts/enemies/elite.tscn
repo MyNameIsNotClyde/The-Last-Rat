@@ -56,6 +56,9 @@ hitbox_type = 1
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=79920977]
 shape = SubResource("RectangleShape2D_nyp1q")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=280129814]
+rect = Rect2(-15, -20, 30, 40)
+
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 
 [editable path="Hurtbox"]

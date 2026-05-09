@@ -2,6 +2,9 @@ extends Control
 
 var level = "res://scripts/world.tscn"
 
+func _ready() -> void:
+	get_tree().paused = false
+
 func _on_focus_timer_timeout() -> void:
 	$PlayButton.grab_focus()
 

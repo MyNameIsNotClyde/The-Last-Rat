@@ -37,7 +37,7 @@ const ITEM_LIST = [
 		"name": "Ergonomic Grip",
 		"icon": preload("res://assets/sprites/upgrades/grip.png"),
 		"type": "item",
-		"description": "Decreases cooldown by 5% per stack.",
+		"description": "Decreases cooldown by 8% per stack.",
 		"weight": 40
 	}, {
 		"name": "Silver Alloy",
@@ -71,7 +71,7 @@ func apply_item_effects(player: CharacterBody2D, obj):
 		"Dusty Boots":
 			player.speed += 16.0
 		"Ergonomic Grip":
-			player.cooldown -= 0.05
+			player.cooldown -= 0.08
 		"Silver Alloy":
 			player.might += 0.1
 		"Compact Ammo":

@@ -3,7 +3,13 @@ extends Node2D
 @export var spawns: Array[SpawnInfo] = []
 @onready var player = get_tree().get_first_node_in_group("player")
 
+const ENEMY_CAP = 350
+var spawned_list: Array[Enemy] = []
+var spawned_index = 0
 var time: float = 0.0
+
+func _ready() -> void:
+	spawned_list.resize(ENEMY_CAP)
 
 func _process(delta: float) -> void:
 	time += delta
@@ -18,6 +24,12 @@ func spawn_enemy(info: SpawnInfo):
 		var spawned_enemy = info.enemy.instantiate()
 		spawned_enemy.global_position = generate_random_spawn_position()
 		add_child(spawned_enemy)
+		if spawned_list[spawned_index] != null:
+			spawned_list[spawned_index].free_if_off_screen = true
+		spawned_list[spawned_index] = spawned_enemy
+		spawned_index += 1
+		if spawned_index >= ENEMY_CAP:
+			spawned_index %= ENEMY_CAP
 
 func generate_random_spawn_position():
 	$Path2D/PathFollow2D.progress_ratio = randf()

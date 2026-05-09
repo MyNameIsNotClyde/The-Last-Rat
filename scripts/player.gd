@@ -4,7 +4,7 @@ var level = 1
 var experience = 0
 var gold = 0
 
-var max_health: float = 50.0
+var max_health: float = 40.0
 var health: float = max_health
 var regeneration: float = 0.0
 var armour: int = 0
